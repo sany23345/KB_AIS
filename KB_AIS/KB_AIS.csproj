@@ -52,10 +52,28 @@
     <Compile Include="Avtorisation.Designer.cs">
       <DependentUpon>Avtorisation.cs</DependentUpon>
     </Compile>
+    <Compile Include="CertificateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CertificateForm.Designer.cs">
+      <DependentUpon>CertificateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HumanResourcesDepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HumanResourcesDepartmentForm.Designer.cs">
+      <DependentUpon>HumanResourcesDepartmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Avtorisation.resx">
       <DependentUpon>Avtorisation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CertificateForm.resx">
+      <DependentUpon>CertificateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HumanResourcesDepartmentForm.resx">
+      <DependentUpon>HumanResourcesDepartmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
