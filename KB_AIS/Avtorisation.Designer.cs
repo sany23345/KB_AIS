@@ -17,6 +17,7 @@ namespace KB_AIS
             if (disposing && (components != null))
             {
                 components.Dispose();
+
             }
             base.Dispose(disposing);
         }
