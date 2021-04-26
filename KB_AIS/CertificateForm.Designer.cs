@@ -78,6 +78,7 @@ namespace KB_AIS
             this.completionMarkButton.TabIndex = 13;
             this.completionMarkButton.Text = "Отметиться о завершении работы\r\n";
             this.completionMarkButton.UseVisualStyleBackColor = true;
+            this.completionMarkButton.Click += new System.EventHandler(this.completionMarkButton_Click);
             // 
             // goingWorkMarkButton
             // 
@@ -91,6 +92,7 @@ namespace KB_AIS
             this.goingWorkMarkButton.TabIndex = 12;
             this.goingWorkMarkButton.Text = "Отметиться о выходе на работу";
             this.goingWorkMarkButton.UseVisualStyleBackColor = true;
+            this.goingWorkMarkButton.Click += new System.EventHandler(this.goingWorkMarkButton_Click);
             // 
             // label5
             // 
@@ -196,9 +198,10 @@ namespace KB_AIS
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CertificateForm";
             this.Text = "CertificateForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CertificateForm_FormClosed);
             this.Load += new System.EventHandler(this.CertificateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

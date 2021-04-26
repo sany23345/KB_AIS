@@ -34,7 +34,7 @@ namespace KB_AIS
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.deleteButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -49,35 +49,35 @@ namespace KB_AIS
             this.заПрошлыйГодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заОпределенныйПериодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchNameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.formEducationalComboBox = new System.Windows.Forms.ComboBox();
+            this.specialtyTextBox = new System.Windows.Forms.TextBox();
+            this.nameEducationalTextBox = new System.Windows.Forms.TextBox();
+            this.tupeEducationComboBox = new System.Windows.Forms.ComboBox();
+            this.finishDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.toolStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -104,14 +104,15 @@ namespace KB_AIS
             this.toolStripButton2.Size = new System.Drawing.Size(161, 23);
             this.toolStripButton2.Text = "Редактировать запись";
             // 
-            // toolStripButton3
+            // deleteButton
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(117, 23);
-            this.toolStripButton3.Text = "Удалить запись";
+            this.deleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(117, 23);
+            this.deleteButton.Text = "Удалить запись";
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // toolStripButton5
             // 
@@ -219,7 +220,7 @@ namespace KB_AIS
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
-            this.toolStripButton3,
+            this.deleteButton,
             this.toolStripButton5,
             this.toolStripButton6,
             this.toolStripButton4});
@@ -230,13 +231,14 @@ namespace KB_AIS
             this.toolStrip1.TabIndex = 20;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // textBox1
+            // searchNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(144, 38);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(206, 26);
-            this.textBox1.TabIndex = 22;
+            this.searchNameTextBox.Location = new System.Drawing.Point(144, 38);
+            this.searchNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchNameTextBox.Name = "searchNameTextBox";
+            this.searchNameTextBox.Size = new System.Drawing.Size(206, 26);
+            this.searchNameTextBox.TabIndex = 22;
+            this.searchNameTextBox.TextChanged += new System.EventHandler(this.searchNameTextBox_TextChanged);
             // 
             // label3
             // 
@@ -306,6 +308,8 @@ namespace KB_AIS
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1342, 557);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // tabPage2
             // 
@@ -315,19 +319,19 @@ namespace KB_AIS
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Controls.Add(this.label10);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.saveButton);
             this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.textBox3);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.comboBox1);
-            this.tabPage2.Controls.Add(this.dateTimePicker3);
-            this.tabPage2.Controls.Add(this.dateTimePicker2);
+            this.tabPage2.Controls.Add(this.formEducationalComboBox);
+            this.tabPage2.Controls.Add(this.specialtyTextBox);
+            this.tabPage2.Controls.Add(this.nameEducationalTextBox);
+            this.tabPage2.Controls.Add(this.tupeEducationComboBox);
+            this.tabPage2.Controls.Add(this.finishDateTimePicker);
+            this.tabPage2.Controls.Add(this.startDateTimePicker);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
@@ -337,6 +341,185 @@ namespace KB_AIS
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Образования сотрудника";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(775, 202);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(121, 19);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Форма обучения";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(775, 164);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(114, 19);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Специальность";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(775, 125);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(125, 19);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Вид образования";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(775, 90);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(182, 19);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Дата окончания обучения";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(775, 50);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(156, 19);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Дата начала обучения";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(775, 15);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(210, 19);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Название учебного заведения";
+            // 
+            // saveButton
+            // 
+            this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveButton.Location = new System.Drawing.Point(795, 261);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(520, 34);
+            this.saveButton.TabIndex = 13;
+            this.saveButton.Text = "Сохранить";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(794, 211);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 19);
+            this.label8.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(791, 178);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 19);
+            this.label7.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(791, 140);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 19);
+            this.label6.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(791, 100);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 19);
+            this.label5.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(791, 62);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 19);
+            this.label2.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(789, 19);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 19);
+            this.label1.TabIndex = 7;
+            // 
+            // formEducationalComboBox
+            // 
+            this.formEducationalComboBox.DisplayMember = "ID";
+            this.formEducationalComboBox.FormattingEnabled = true;
+            this.formEducationalComboBox.Location = new System.Drawing.Point(993, 199);
+            this.formEducationalComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.formEducationalComboBox.Name = "formEducationalComboBox";
+            this.formEducationalComboBox.Size = new System.Drawing.Size(341, 27);
+            this.formEducationalComboBox.TabIndex = 6;
+            this.formEducationalComboBox.ValueMember = "ID";
+            // 
+            // specialtyTextBox
+            // 
+            this.specialtyTextBox.Location = new System.Drawing.Point(993, 161);
+            this.specialtyTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.specialtyTextBox.Name = "specialtyTextBox";
+            this.specialtyTextBox.Size = new System.Drawing.Size(341, 26);
+            this.specialtyTextBox.TabIndex = 5;
+            // 
+            // nameEducationalTextBox
+            // 
+            this.nameEducationalTextBox.Location = new System.Drawing.Point(993, 8);
+            this.nameEducationalTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.nameEducationalTextBox.Name = "nameEducationalTextBox";
+            this.nameEducationalTextBox.Size = new System.Drawing.Size(341, 26);
+            this.nameEducationalTextBox.TabIndex = 1;
+            // 
+            // tupeEducationComboBox
+            // 
+            this.tupeEducationComboBox.FormattingEnabled = true;
+            this.tupeEducationComboBox.Location = new System.Drawing.Point(993, 122);
+            this.tupeEducationComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.tupeEducationComboBox.Name = "tupeEducationComboBox";
+            this.tupeEducationComboBox.Size = new System.Drawing.Size(341, 27);
+            this.tupeEducationComboBox.TabIndex = 4;
+            // 
+            // finishDateTimePicker
+            // 
+            this.finishDateTimePicker.Location = new System.Drawing.Point(993, 84);
+            this.finishDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.finishDateTimePicker.Name = "finishDateTimePicker";
+            this.finishDateTimePicker.Size = new System.Drawing.Size(341, 26);
+            this.finishDateTimePicker.TabIndex = 3;
+            // 
+            // startDateTimePicker
+            // 
+            this.startDateTimePicker.Location = new System.Drawing.Point(993, 44);
+            this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.startDateTimePicker.Name = "startDateTimePicker";
+            this.startDateTimePicker.Size = new System.Drawing.Size(341, 26);
+            this.startDateTimePicker.TabIndex = 2;
             // 
             // dataGridView2
             // 
@@ -351,188 +534,10 @@ namespace KB_AIS
             this.dataGridView2.Size = new System.Drawing.Size(758, 549);
             this.dataGridView2.TabIndex = 0;
             // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(993, 44);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(341, 26);
-            this.dateTimePicker2.TabIndex = 2;
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(993, 84);
-            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(341, 26);
-            this.dateTimePicker3.TabIndex = 3;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(993, 122);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(341, 27);
-            this.comboBox1.TabIndex = 4;
-            this.comboBox1.ValueMember = "ID";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(993, 8);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(341, 26);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(993, 161);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(341, 26);
-            this.textBox3.TabIndex = 5;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(993, 199);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(341, 27);
-            this.comboBox2.TabIndex = 6;
-            this.comboBox2.ValueMember = "ID";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(789, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 19);
-            this.label1.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(791, 62);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 19);
-            this.label2.TabIndex = 8;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(791, 100);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 19);
-            this.label5.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(791, 140);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 19);
-            this.label6.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(791, 178);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 19);
-            this.label7.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(794, 211);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 19);
-            this.label8.TabIndex = 12;
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(795, 261);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(520, 34);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Сохранить";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(775, 15);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(210, 19);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Название учебного заведения";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(775, 50);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(156, 19);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Дата начала обучения";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(775, 90);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(182, 19);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Дата окончания обучения";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(775, 125);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(125, 19);
-            this.label12.TabIndex = 19;
-            this.label12.Text = "Вид образования";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(775, 164);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(114, 19);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Специальность";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(775, 202);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(121, 19);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Форма обучения";
-            // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Location = new System.Drawing.Point(0, 76);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
@@ -540,26 +545,29 @@ namespace KB_AIS
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1350, 589);
             this.tabControl1.TabIndex = 25;
+            this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
-            // button2
+            // updateButton
             // 
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(891, 38);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 29);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Обновить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.updateButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.updateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updateButton.Location = new System.Drawing.Point(891, 38);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(4);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(112, 29);
+            this.updateButton.TabIndex = 26;
+            this.updateButton.Text = "Обновить";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // dateTimePicker1
+            // searchDateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(591, 41);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(280, 26);
-            this.dateTimePicker1.TabIndex = 21;
+            this.searchDateTimePicker.Location = new System.Drawing.Point(591, 41);
+            this.searchDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.searchDateTimePicker.Name = "searchDateTimePicker";
+            this.searchDateTimePicker.Size = new System.Drawing.Size(280, 26);
+            this.searchDateTimePicker.TabIndex = 21;
+            this.searchDateTimePicker.ValueChanged += new System.EventHandler(this.searchDateTimePicker_ValueChanged);
             // 
             // HumanResourcesDepartmentForm
             // 
@@ -567,17 +575,19 @@ namespace KB_AIS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1350, 665);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.searchDateTimePicker);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchNameTextBox);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HumanResourcesDepartmentForm";
             this.Text = "HumanResourcesDepartmentForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HumanResourcesDepartmentForm_FormClosed);
+            this.Load += new System.EventHandler(this.HumanResourcesDepartmentForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
@@ -595,7 +605,7 @@ namespace KB_AIS
 
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton deleteButton;
         private System.Windows.Forms.ToolStripButton toolStripButton5;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton4;
@@ -610,7 +620,7 @@ namespace KB_AIS
         private System.Windows.Forms.ToolStripMenuItem заПрошлыйГодToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem заОпределенныйПериодToolStripMenuItem1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchNameTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage1;
@@ -622,22 +632,22 @@ namespace KB_AIS
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.ComboBox formEducationalComboBox;
+        private System.Windows.Forms.TextBox specialtyTextBox;
+        private System.Windows.Forms.TextBox nameEducationalTextBox;
+        private System.Windows.Forms.ComboBox tupeEducationComboBox;
+        private System.Windows.Forms.DateTimePicker finishDateTimePicker;
+        private System.Windows.Forms.DateTimePicker startDateTimePicker;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.DateTimePicker searchDateTimePicker;
     }
 }

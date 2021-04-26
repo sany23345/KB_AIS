@@ -25,11 +25,11 @@ namespace KB_AIS
 
         private void enterButton_Click(object sender, EventArgs e)
         {
-            string qwere = @"Select Сотрудники.ID,ФИО,Пароль,Должности.Название_должности, Удостоверение.Дата_выдачи,Удостоверение.Дата_истечения_срока_действия From Сотрудники
+            string query = @"Select Сотрудники.ID,ФИО,Пароль,Должности.Название_должности, Удостоверение.Дата_выдачи,Удостоверение.Дата_истечения_срока_действия From Сотрудники
                 inner join Должности on Должности.ID=Сотрудники.Должность
                 inner join Удостоверение on Удостоверение.ID = Сотрудники.ID
                 where Удалено=0 and Сотрудники.ID='" + loginTexBox.Text+"' and Пароль='"+passwordTextBox.Text+"'";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(qwere,sqlConnection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             if (dataTable.Rows.Count == 0)
@@ -57,6 +57,9 @@ namespace KB_AIS
                     certificateForm.Visible = true;
                     this.Visible = false;
                 }
+
+                loginTexBox.Text = null;
+                passwordTextBox.Text = null;
             }
         }
     }
