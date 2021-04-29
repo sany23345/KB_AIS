@@ -14,11 +14,10 @@ namespace KB_AIS
 
     public partial class HumanResourcesDepartmentForm : Form
     {
-        // static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
         string id;
-
 
         public Form avtorisaitionForm;
         public HumanResourcesDepartmentForm()
@@ -53,7 +52,6 @@ namespace KB_AIS
             sqlDataAdapter.Fill(dataTable);
             dataGridView2.DataSource = dataTable;
         }
-
 
         private void HumanResourcesDepartmentForm_Load(object sender, EventArgs e) //событие при загрузки формы
         {
@@ -177,6 +175,27 @@ namespace KB_AIS
                 sqlConnection.Close();
                 RefreshTable();
             }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            AddForm addForm = new AddForm();
+            addForm.humanRDForm = this;
+            addForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void HumanResourcesDepartmentForm_VisibleChanged(object sender, EventArgs e)
+        {
+            RefreshTable();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            RedactForm redactForm = new RedactForm();
+            redactForm.humanRDForm = this;
+            redactForm.Visible = true;
+            this.Visible = false;
         }
     }
 }

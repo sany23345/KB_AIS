@@ -94,6 +94,7 @@ namespace KB_AIS
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(127, 23);
             this.toolStripButton1.Text = "Добавить запись";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -103,6 +104,7 @@ namespace KB_AIS
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(161, 23);
             this.toolStripButton2.Text = "Редактировать запись";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // deleteButton
             // 
@@ -588,6 +590,7 @@ namespace KB_AIS
             this.Text = "HumanResourcesDepartmentForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HumanResourcesDepartmentForm_FormClosed);
             this.Load += new System.EventHandler(this.HumanResourcesDepartmentForm_Load);
+            this.VisibleChanged += new System.EventHandler(this.HumanResourcesDepartmentForm_VisibleChanged);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
