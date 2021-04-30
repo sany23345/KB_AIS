@@ -16,7 +16,7 @@ namespace KB_AIS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Avtorisation());
+            Application.Run(new PrintOutSertificateForm());
         }
     }
 }

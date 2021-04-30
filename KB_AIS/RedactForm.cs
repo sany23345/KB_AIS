@@ -18,6 +18,7 @@ namespace KB_AIS
         SqlConnection sqlConnection = new SqlConnection(connection);
         public Form humanRDForm;
         string id = "";
+        string idPosition;
         string OldData;
         string OldDataExit;
         string name, surname, patronymic, tel, seriaPassport, idPassport, position;
@@ -131,7 +132,7 @@ namespace KB_AIS
             expirationDateTimePicker.Value = DateTime.Parse(data.Rows[0]["Дата_истечения_срока_действия"].ToString());
             seriesPassportTextBox.Text = data.Rows[0]["Серия_паспорта"].ToString();
 
-          
+            idPosition = positioncomboBox.SelectedValue.ToString();
 
             OldData = dateOfIssueTimePicker.Value.ToString("yyyy.MM.dd");
             OldDataExit = expirationDateTimePicker.Value.ToString("yyyy.MM.dd");
@@ -168,16 +169,14 @@ namespace KB_AIS
                 + "Контактный_телефон= '" + telephoneTextBox.Text + "' , Должность ='" + positioncomboBox.SelectedValue + "' "
                 + "where ID = '" + id + "';" +
                 "Insert into История_выданых_удостоверений(id_Сотрудника,id_Удостоверения,Дата_Выдачи,Дата_Истечения_Срока_Действия) values ('" + id + "','" + id + "','" + OldData + "','" + OldDataExit + "');" +
-                " Insert into История_изменений (ID_Сотрудника,ФИО,Серия_паспорта,Номер_паспорта,Должность,Дата_изменения) " +
-                " values('"+ id + "', '" + mas[0] + " " + mas[1] + " " + mas[2] + "','" + data.Rows[0]["Серия_паспорта"].ToString() + "', '"+ data.Rows[0]["Номер_паспорта"].ToString() + "', '"+positioncomboBox.SelectedValue.ToString()+"', '"+DateTime.Now.ToString("yyyy.MM.dd")+"'); ";
+                " Insert into История_изменений (ID_Сотрудника,ФИО,Серия_паспорта,Номер_паспорта,Должность,Дата_изменения,Номер_телефона) " +
+                " values('"+ id + "', '" + mas[0] + " " + mas[1] + " " + mas[2] + "','" + data.Rows[0]["Серия_паспорта"].ToString() + "', '"+ data.Rows[0]["Номер_паспорта"].ToString() + "', '"+ idPosition+"', '" +DateTime.Now.ToString("yyyy.MM.dd")+"','"+data.Rows[0]["Контактный_телефон"] +"'); ";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 MessageBox.Show("Данные изменены");
-
                 RefreshTable();
-
             }
         }
     }

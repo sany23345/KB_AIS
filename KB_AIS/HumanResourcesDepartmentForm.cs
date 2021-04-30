@@ -197,5 +197,21 @@ namespace KB_AIS
             redactForm.Visible = true;
             this.Visible = false;
         }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;//свойство формы для ограничения действия пользователя
+            HistoryForm historyForm = new HistoryForm(); //создание формы добавления
+            historyForm.humanRDForm = this; //связь между формами
+            historyForm.Visible=true; //открытие формы AddForm  
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;//свойство формы для ограничения действия пользователя
+            HistoryChangeForm  historyChangeForm = new HistoryChangeForm(); //создание формы добавления
+            historyChangeForm.humanRDForm = this; //связь между формами
+            historyChangeForm.Visible = true; //открытие формы AddForm  
+        }
     }
 }
