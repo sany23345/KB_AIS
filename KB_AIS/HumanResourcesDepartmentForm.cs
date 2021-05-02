@@ -213,5 +213,21 @@ namespace KB_AIS
             historyChangeForm.humanRDForm = this; //связь между формами
             historyChangeForm.Visible = true; //открытие формы AddForm  
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                PrintOutSertificateForm printOutSertificateForm = new PrintOutSertificateForm();
+                printOutSertificateForm.id = id;
+                printOutSertificateForm.humanRDForm = this;
+                printOutSertificateForm.Visible = true;
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Выбирите сотрудника!!!");
+            }
+        }
     }
 }

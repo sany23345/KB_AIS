@@ -39,6 +39,7 @@ namespace KB_AIS
             // 
             // enterButton
             // 
+            this.enterButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.enterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enterButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

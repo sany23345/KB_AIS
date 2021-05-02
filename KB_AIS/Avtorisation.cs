@@ -45,6 +45,13 @@ namespace KB_AIS
                     departmentForm.Visible = true;
                     this.Visible = false;
                 }
+                else if(dataTable.Rows[0]["Название_должности"].ToString() == "Дежурный")
+                {
+                    DutyForm dutyForm = new DutyForm();
+                    dutyForm.avtorisationForm = this;
+                    dutyForm.Visible = true;
+                    this.Visible = false;
+                }
                 else 
                 {
                     CertificateForm certificateForm = new CertificateForm();

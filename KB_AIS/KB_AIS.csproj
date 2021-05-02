@@ -82,6 +82,12 @@
     <Compile Include="CertificateForm.Designer.cs">
       <DependentUpon>CertificateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DutyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DutyForm.Designer.cs">
+      <DependentUpon>DutyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HistoryChangeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     <EmbeddedResource Include="Certificate.rdlc" />
     <EmbeddedResource Include="CertificateForm.resx">
       <DependentUpon>CertificateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DutyForm.resx">
+      <DependentUpon>DutyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HistoryChangeForm.resx">
       <DependentUpon>HistoryChangeForm.cs</DependentUpon>

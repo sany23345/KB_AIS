@@ -25,60 +25,6 @@ namespace KB_AIS
             avtorisationForm.Visible = true;
         }
 
-        private void completionMarkButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите оставить отметку о завершении работы?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                string query = @"select * from Рабочее_время
-                            where ID_удостоверения='" + id + "' and Конец_рабочего_времени BETWEEN '" + DateTime.Now.ToString("yyyyMMdd") + "' AND '" + DateTime.Now.AddDays(1).ToString("yyyyMMdd") + "'";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count == 0)
-                {
-                    query = @"UPDATE Рабочее_время set Конец_рабочего_времени='" + DateTime.Now.ToString("yyyyMMdd HH:mm:00") + "' where ID_удостоверения='" + id + "'";
-                    SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                    sqlConnection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    MessageBox.Show("Отметка принята, дата и время окончания работы " + DateTime.Now.ToString("yyyy.MM.dd HH:mm:00"));
-                }
-                else if (dataTable.Rows.Count > 0)
-                {
-                    MessageBox.Show("Отметка уже была принята сегодня");
-                }
-            }
-        }
-
-        private void goingWorkMarkButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите оставить отметку о начале работы?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                string query = @"select * from Рабочее_время
-                            where ID_удостоверения='" + id + "' and Начало_рабочего_времени BETWEEN '" + DateTime.Now.ToString("yyyyMMdd") + "' AND '" + DateTime.Now.AddDays(1).ToString("yyyyMMdd") + "'";
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-
-                if (dataTable.Rows.Count > 0)
-                {
-                    MessageBox.Show("Отметка уже была принята сегодня");
-                }
-                else if (dataTable.Rows.Count == 0)
-                {
-                    query = @" Insert into Рабочее_время values('" + id + "','" + DateTime.Now.ToString("yyyyMMdd HH:mm:00") + "','')";
-                    SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                    sqlConnection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                    sqlConnection.Close();
-                    MessageBox.Show("Отметка принята, дата и время выхода " + DateTime.Now.ToString("yyyy.MM.dd HH:mm:00"));
-                }
-            }
-        }
-
         private void CertificateForm_Load(object sender, EventArgs e)
         {
             numberTextBox.Text = id;

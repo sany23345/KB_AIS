@@ -19,6 +19,7 @@ namespace KB_AIS
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
         public string id;
+        public Form humanRDForm;
         public PrintOutSertificateForm()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace KB_AIS
             string query = @"Select Сотрудники.Id, ФИО, Должности.Название_должности,Удостоверение.Дата_выдачи,Удостоверение.Дата_истечения_срока_действия From Сотрудники
             inner join Должности on Должности.ID=Сотрудники.Должность
             Inner join Удостоверение on Удостоверение.ID=Сотрудники.ID  
-            where Сотрудники.Id=5;";
+            where Сотрудники.Id='"+id+"';";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query,sqlConnection);
             DataTable dataTable = new DataTable();
@@ -48,6 +49,11 @@ namespace KB_AIS
             reportViewer1.LocalReport.SetParameters(new ReportParameter("MouthDate", DateTime.Parse(dataTable.Rows[0][4].ToString()).ToString("MMMM")));
             reportViewer1.LocalReport.SetParameters(new ReportParameter("YearDate", DateTime.Parse(dataTable.Rows[0][4].ToString()).ToString("yyyy г.")));
             this.reportViewer1.RefreshReport();
+        }
+
+        private void PrintOutSertificateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            humanRDForm.Visible = true;
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace KB_AIS
 {
@@ -110,6 +111,12 @@ namespace KB_AIS
                     sqlCommand.ExecuteNonQuery();
                     sqlConnection.Close();
                     MessageBox.Show("Сотрудник добавлен!!!");
+
+                    PrintOutSertificateForm printOutSertificateForm = new PrintOutSertificateForm();
+                    printOutSertificateForm.id = id.ToString();
+                    printOutSertificateForm.humanRDForm = this;
+                    printOutSertificateForm.Visible = true;
+                    this.Visible = false;
                 }
             }
             else

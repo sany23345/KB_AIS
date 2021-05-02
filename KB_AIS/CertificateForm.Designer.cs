@@ -31,8 +31,6 @@ namespace KB_AIS
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.completionMarkButton = new System.Windows.Forms.Button();
-            this.goingWorkMarkButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,34 +63,6 @@ namespace KB_AIS
             this.label1.Size = new System.Drawing.Size(159, 19);
             this.label1.TabIndex = 7;
             this.label1.Text = "Номер удостоверения:";
-            // 
-            // completionMarkButton
-            // 
-            this.completionMarkButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.completionMarkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.completionMarkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.completionMarkButton.Location = new System.Drawing.Point(324, 224);
-            this.completionMarkButton.Margin = new System.Windows.Forms.Padding(4);
-            this.completionMarkButton.Name = "completionMarkButton";
-            this.completionMarkButton.Size = new System.Drawing.Size(265, 36);
-            this.completionMarkButton.TabIndex = 13;
-            this.completionMarkButton.Text = "Отметиться о завершении работы\r\n";
-            this.completionMarkButton.UseVisualStyleBackColor = true;
-            this.completionMarkButton.Click += new System.EventHandler(this.completionMarkButton_Click);
-            // 
-            // goingWorkMarkButton
-            // 
-            this.goingWorkMarkButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.goingWorkMarkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.goingWorkMarkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.goingWorkMarkButton.Location = new System.Drawing.Point(13, 224);
-            this.goingWorkMarkButton.Margin = new System.Windows.Forms.Padding(4);
-            this.goingWorkMarkButton.Name = "goingWorkMarkButton";
-            this.goingWorkMarkButton.Size = new System.Drawing.Size(245, 36);
-            this.goingWorkMarkButton.TabIndex = 12;
-            this.goingWorkMarkButton.Text = "Отметиться о выходе на работу";
-            this.goingWorkMarkButton.UseVisualStyleBackColor = true;
-            this.goingWorkMarkButton.Click += new System.EventHandler(this.goingWorkMarkButton_Click);
             // 
             // label5
             // 
@@ -182,8 +152,9 @@ namespace KB_AIS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(599, 273);
+            this.ClientSize = new System.Drawing.Size(599, 210);
             this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.positionTextBox);
             this.Controls.Add(this.expirationDateTextBox);
@@ -192,8 +163,6 @@ namespace KB_AIS
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.completionMarkButton);
-            this.Controls.Add(this.goingWorkMarkButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -212,8 +181,6 @@ namespace KB_AIS
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button completionMarkButton;
-        private System.Windows.Forms.Button goingWorkMarkButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
