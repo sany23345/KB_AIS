@@ -29,6 +29,7 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DutyForm));
             this.label2 = new System.Windows.Forms.Label();
             this.searchByIdTextBox = new System.Windows.Forms.TextBox();
@@ -43,6 +44,7 @@ namespace KB_AIS
             this.рабочееВремяЗаТекущийМесяцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -183,9 +185,14 @@ namespace KB_AIS
             this.toolStripButton2.Margin = new System.Windows.Forms.Padding(757, 1, 0, 2);
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripButton2.Size = new System.Drawing.Size(46, 19);
+            this.toolStripButton2.Size = new System.Drawing.Size(46, 22);
             this.toolStripButton2.Text = "Выход";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // DutyForm
             // 
@@ -203,7 +210,7 @@ namespace KB_AIS
             this.Controls.Add(this.searchByNameTextBox);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DutyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DutyForm";
@@ -232,5 +239,6 @@ namespace KB_AIS
         private System.Windows.Forms.ToolStripMenuItem рабочееВремяЗаТекущийМесяцToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рабочееВремяЗаОпределенныйПериодToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.Timer timer1;
     }
 }

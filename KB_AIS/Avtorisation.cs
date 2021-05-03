@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace KB_AIS
 {
@@ -17,7 +18,6 @@ namespace KB_AIS
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
 
-
         public Avtorisation()
         {
             InitializeComponent();
@@ -25,10 +25,15 @@ namespace KB_AIS
 
         private void enterButton_Click(object sender, EventArgs e)
         {
+            var md5 = MD5.Create();
+            var hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(passwordTextBox.Text));
+            string password = Convert.ToBase64String(hashPassword);
+
             string query = @"Select Сотрудники.ID,ФИО,Пароль,Должности.Название_должности, Удостоверение.Дата_выдачи,Удостоверение.Дата_истечения_срока_действия From Сотрудники
                 inner join Должности on Должности.ID=Сотрудники.Должность
                 inner join Удостоверение on Удостоверение.ID = Сотрудники.ID
-                where Удалено=0 and Сотрудники.ID='" + loginTexBox.Text+"' and Пароль='"+passwordTextBox.Text+"'";
+                where Удалено=0 and Сотрудники.ID='" + loginTexBox.Text+"' and Пароль='"+ password + "'";
+
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -42,6 +47,7 @@ namespace KB_AIS
                 {
                     HumanResourcesDepartmentForm departmentForm = new HumanResourcesDepartmentForm();
                     departmentForm.avtorisaitionForm = this;
+                    departmentForm.IdPeople = dataTable.Rows[0][0].ToString();
                     departmentForm.Visible = true;
                     this.Visible = false;
                 }
@@ -49,6 +55,7 @@ namespace KB_AIS
                 {
                     DutyForm dutyForm = new DutyForm();
                     dutyForm.avtorisationForm = this;
+                    dutyForm.IdPeople= dataTable.Rows[0][0].ToString(); 
                     dutyForm.Visible = true;
                     this.Visible = false;
                 }

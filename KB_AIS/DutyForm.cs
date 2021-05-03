@@ -18,6 +18,8 @@ namespace KB_AIS
         SqlConnection sqlConnection = new SqlConnection(connection);
         public Form avtorisationForm;
         string id;
+        public string IdPeople;
+        string pass;
 
         public DutyForm()
         {
@@ -32,6 +34,21 @@ namespace KB_AIS
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
+
+            query = @"Select Пароль from Сотрудники  
+                                where ID='" + IdPeople + "' ";
+            sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            pass = dataTable.Rows[0]["Пароль"].ToString();
+
+
+            if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
+            {
+                timer1.Start();
+            }
+
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -146,6 +163,19 @@ namespace KB_AIS
             {
                 e.Handled = true;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+
+            MessageBox.Show("Вам необходимо изменить пароль!!!");
+            PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
+            passwodChangeForm.backForm = this;
+            passwodChangeForm.id = IdPeople;
+            passwodChangeForm.pass = pass;
+            passwodChangeForm.Visible = true;
+            this.Enabled = false;
         }
     }
 }

@@ -106,6 +106,12 @@
     <Compile Include="HumanResourcesDepartmentForm.Designer.cs">
       <DependentUpon>HumanResourcesDepartmentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswodChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswodChangeForm.Designer.cs">
+      <DependentUpon>PasswodChangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrintOutSertificateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HumanResourcesDepartmentForm.resx">
       <DependentUpon>HumanResourcesDepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswodChangeForm.resx">
+      <DependentUpon>PasswodChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintOutSertificateForm.resx">
       <DependentUpon>PrintOutSertificateForm.cs</DependentUpon>

@@ -18,11 +18,26 @@ namespace KB_AIS
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
         string id;
+        string pass;
+        public string IdPeople;
 
         public Form avtorisaitionForm;
         public HumanResourcesDepartmentForm()
         {
             InitializeComponent();
+        }
+        public void PasswordChange()
+        {
+            timer1.Stop();
+
+            MessageBox.Show("Вам необходимо изменить пароль!!!");
+            PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
+            passwodChangeForm.backForm = this;
+            passwodChangeForm.id = IdPeople;
+            passwodChangeForm.pass = pass;
+            passwodChangeForm.Visible = true;
+            this.Enabled = false;
+
         }
 
         public void RefreshTable() //метод для обновления таблицы
@@ -62,7 +77,7 @@ namespace KB_AIS
             tupeEducationComboBox.DataSource = dataTable;
             tupeEducationComboBox.ValueMember = "ID";
             tupeEducationComboBox.DisplayMember = "Вид_образования";
-            
+
             query = "Select * from Форма_обучения";
             sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable1 = new DataTable();
@@ -74,7 +89,21 @@ namespace KB_AIS
             RefreshTable();
 
             finishDateTimePicker.MaxDate = DateTime.Now;
-            startDateTimePicker.MaxDate= DateTime.Now;
+            startDateTimePicker.MaxDate = DateTime.Now;
+
+            query = @"Select Пароль from Сотрудники  
+                                where ID='" + IdPeople + "' ";
+            sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            pass = dataTable.Rows[0]["Пароль"].ToString();
+
+
+
+            if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
+            {
+                timer1.Start();
+            }
         }
 
         private void HumanResourcesDepartmentForm_FormClosed(object sender, FormClosedEventArgs e) //событие при закрытии формы
@@ -228,6 +257,11 @@ namespace KB_AIS
             {
                 MessageBox.Show("Выбирите сотрудника!!!");
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            PasswordChange();
         }
     }
 }

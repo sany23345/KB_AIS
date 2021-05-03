@@ -102,10 +102,15 @@ namespace KB_AIS
                     int id = int.Parse(dataTable.Rows[0][0].ToString());
                     id++;
 
+                    var md5 = MD5.Create();
+                    var hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes("123456"));
+                    string password = Convert.ToBase64String(hashPassword);
+
                     query = @"Insert Into Удостоверение(ID,Дата_выдачи,Дата_истечения_срока_действия)
                         values ('" + id + "' , '" + dateOfIssueTimePicker.Value.ToString("yyyy.MM.dd") + "' , '" + expirationDateTimePicker.Value.ToString("yyyy.MM.dd") + "'); " +
                         "Insert Into Сотрудники(ID,ФИО,Должность,Контактный_телефон, Номер_паспорта, Серия_паспорта, Пароль,Удалено) " +
-                        "values ('" + id + "', '" + surnameTextBox.Text + " " + nameTextBox.Text + " " + patronymicTextBox.Text + "', '" + positioncomboBox.SelectedValue + "', '" + telephoneTextBox.Text + "', '" + idPassportTextBox.Text + "', '" + seriesPassportTextBox.Text + "', '123456 ','0')";
+                        "values ('" + id + "', '" + surnameTextBox.Text + " " + nameTextBox.Text + " " + patronymicTextBox.Text + "', '" + positioncomboBox.SelectedValue + "', '" + telephoneTextBox.Text + "', '" + idPassportTextBox.Text + "', '" + seriesPassportTextBox.Text + "', '"+ password + "','0')";
+
                     SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                     sqlConnection.Open();
                     sqlCommand.ExecuteNonQuery();

@@ -29,6 +29,7 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@ namespace KB_AIS
             this.expirationDateTextBox = new System.Windows.Forms.TextBox();
             this.positionTextBox = new System.Windows.Forms.TextBox();
             this.numberTextBox = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label2
@@ -148,6 +150,11 @@ namespace KB_AIS
             this.numberTextBox.Size = new System.Drawing.Size(348, 26);
             this.numberTextBox.TabIndex = 19;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 300;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // CertificateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -190,5 +197,6 @@ namespace KB_AIS
         private System.Windows.Forms.TextBox expirationDateTextBox;
         private System.Windows.Forms.TextBox positionTextBox;
         private System.Windows.Forms.TextBox numberTextBox;
+        private System.Windows.Forms.Timer timer1;
     }
 }
