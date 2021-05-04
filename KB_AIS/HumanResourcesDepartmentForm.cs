@@ -263,5 +263,59 @@ namespace KB_AIS
         {
             PasswordChange();
         }
+
+        private void заТекущийМесяцToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.markreport = "1";
+            reportForm.humanRDForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void заТекущийГодToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.markreport = "2";
+            reportForm.humanRDForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void заОпределенныйПериодToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PeriodForm periodForm = new PeriodForm();
+            periodForm.humanRDForm = this;
+            periodForm.mark = "1";
+            periodForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void заТекущийМесяцToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.markreport = "4";
+            reportForm.humanRDForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void заТекущийГодToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.markreport = "5";
+            reportForm.humanRDForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void заОпределенныйПериодToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PeriodForm periodForm = new PeriodForm();
+            periodForm.humanRDForm = this;
+            periodForm.mark = "2";
+            periodForm.Visible = true;
+            this.Visible = false;
+        }
     }
 }

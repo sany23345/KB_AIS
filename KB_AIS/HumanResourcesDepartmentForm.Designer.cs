@@ -31,8 +31,8 @@ namespace KB_AIS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanResourcesDepartmentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.deleteButton = new System.Windows.Forms.ToolStripButton();
@@ -42,12 +42,10 @@ namespace KB_AIS
             this.поВыданнымУдостоверениямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заТекущийМесяцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заТекущийГодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заПрошлыйГодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заОпределенныйПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поИстекщимУдостоверениямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заТекущийМесяцToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заТекущийГодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.заПрошлыйГодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заОпределенныйПериодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -156,7 +154,6 @@ namespace KB_AIS
             this.поВыданнымУдостоверениямToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.заТекущийМесяцToolStripMenuItem,
             this.заТекущийГодToolStripMenuItem,
-            this.заПрошлыйГодToolStripMenuItem,
             this.заОпределенныйПериодToolStripMenuItem});
             this.поВыданнымУдостоверениямToolStripMenuItem.Name = "поВыданнымУдостоверениямToolStripMenuItem";
             this.поВыданнымУдостоверениямToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
@@ -167,59 +164,52 @@ namespace KB_AIS
             this.заТекущийМесяцToolStripMenuItem.Name = "заТекущийМесяцToolStripMenuItem";
             this.заТекущийМесяцToolStripMenuItem.Size = new System.Drawing.Size(250, 24);
             this.заТекущийМесяцToolStripMenuItem.Text = "За текущий месяц";
+            this.заТекущийМесяцToolStripMenuItem.Click += new System.EventHandler(this.заТекущийМесяцToolStripMenuItem_Click);
             // 
             // заТекущийГодToolStripMenuItem
             // 
             this.заТекущийГодToolStripMenuItem.Name = "заТекущийГодToolStripMenuItem";
             this.заТекущийГодToolStripMenuItem.Size = new System.Drawing.Size(250, 24);
             this.заТекущийГодToolStripMenuItem.Text = "За текущий год";
-            // 
-            // заПрошлыйГодToolStripMenuItem
-            // 
-            this.заПрошлыйГодToolStripMenuItem.Name = "заПрошлыйГодToolStripMenuItem";
-            this.заПрошлыйГодToolStripMenuItem.Size = new System.Drawing.Size(250, 24);
-            this.заПрошлыйГодToolStripMenuItem.Text = "За прошлый год";
+            this.заТекущийГодToolStripMenuItem.Click += new System.EventHandler(this.заТекущийГодToolStripMenuItem_Click);
             // 
             // заОпределенныйПериодToolStripMenuItem
             // 
             this.заОпределенныйПериодToolStripMenuItem.Name = "заОпределенныйПериодToolStripMenuItem";
             this.заОпределенныйПериодToolStripMenuItem.Size = new System.Drawing.Size(250, 24);
             this.заОпределенныйПериодToolStripMenuItem.Text = "За определенный период";
+            this.заОпределенныйПериодToolStripMenuItem.Click += new System.EventHandler(this.заОпределенныйПериодToolStripMenuItem_Click);
             // 
             // поИстекщимУдостоверениямToolStripMenuItem
             // 
             this.поИстекщимУдостоверениямToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.заТекущийМесяцToolStripMenuItem1,
             this.заТекущийГодToolStripMenuItem1,
-            this.заПрошлыйГодToolStripMenuItem1,
             this.заОпределенныйПериодToolStripMenuItem1});
             this.поИстекщимУдостоверениямToolStripMenuItem.Name = "поИстекщимУдостоверениямToolStripMenuItem";
             this.поИстекщимУдостоверениямToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
-            this.поИстекщимУдостоверениямToolStripMenuItem.Text = "По истекщим удостоверениям";
+            this.поИстекщимУдостоверениямToolStripMenuItem.Text = "По истекшим удостоверениям";
             // 
             // заТекущийМесяцToolStripMenuItem1
             // 
             this.заТекущийМесяцToolStripMenuItem1.Name = "заТекущийМесяцToolStripMenuItem1";
             this.заТекущийМесяцToolStripMenuItem1.Size = new System.Drawing.Size(250, 24);
             this.заТекущийМесяцToolStripMenuItem1.Text = "За текущий месяц";
+            this.заТекущийМесяцToolStripMenuItem1.Click += new System.EventHandler(this.заТекущийМесяцToolStripMenuItem1_Click);
             // 
             // заТекущийГодToolStripMenuItem1
             // 
             this.заТекущийГодToolStripMenuItem1.Name = "заТекущийГодToolStripMenuItem1";
             this.заТекущийГодToolStripMenuItem1.Size = new System.Drawing.Size(250, 24);
             this.заТекущийГодToolStripMenuItem1.Text = "За текущий год";
-            // 
-            // заПрошлыйГодToolStripMenuItem1
-            // 
-            this.заПрошлыйГодToolStripMenuItem1.Name = "заПрошлыйГодToolStripMenuItem1";
-            this.заПрошлыйГодToolStripMenuItem1.Size = new System.Drawing.Size(250, 24);
-            this.заПрошлыйГодToolStripMenuItem1.Text = "За прошлый год";
+            this.заТекущийГодToolStripMenuItem1.Click += new System.EventHandler(this.заТекущийГодToolStripMenuItem1_Click);
             // 
             // заОпределенныйПериодToolStripMenuItem1
             // 
             this.заОпределенныйПериодToolStripMenuItem1.Name = "заОпределенныйПериодToolStripMenuItem1";
             this.заОпределенныйПериодToolStripMenuItem1.Size = new System.Drawing.Size(250, 24);
             this.заОпределенныйПериодToolStripMenuItem1.Text = "За определенный период";
+            this.заОпределенныйПериодToolStripMenuItem1.Click += new System.EventHandler(this.заОпределенныйПериодToolStripMenuItem1_Click);
             // 
             // toolStrip1
             // 
@@ -299,23 +289,23 @@ namespace KB_AIS
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
@@ -636,12 +626,10 @@ namespace KB_AIS
         private System.Windows.Forms.ToolStripMenuItem поВыданнымУдостоверениямToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заТекущийМесяцToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заТекущийГодToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заПрошлыйГодToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заОпределенныйПериодToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поИстекщимУдостоверениямToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заТекущийМесяцToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem заТекущийГодToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem заПрошлыйГодToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem заОпределенныйПериодToolStripMenuItem1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.TextBox searchNameTextBox;
