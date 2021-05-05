@@ -137,6 +137,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Report.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ReportDuty.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportDuty.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDutyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportDutyForm.Designer.cs">
+      <DependentUpon>ReportDutyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +198,10 @@
     <EmbeddedResource Include="RedactForm.resx">
       <DependentUpon>RedactForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportDuty.rdlc" />
+    <EmbeddedResource Include="ReportDutyForm.resx">
+      <DependentUpon>ReportDutyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +226,17 @@
     </None>
     <None Include="Report.xss">
       <DependentUpon>Report.xsd</DependentUpon>
+    </None>
+    <None Include="ReportDuty.xsc">
+      <DependentUpon>ReportDuty.xsd</DependentUpon>
+    </None>
+    <None Include="ReportDuty.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportDuty.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReportDuty.xss">
+      <DependentUpon>ReportDuty.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

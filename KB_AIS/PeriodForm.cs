@@ -52,7 +52,16 @@ namespace KB_AIS
                 reportForm.Visible = true;
                 this.Visible = false;
             }
-            
+            else if (mark == "3")
+            {
+                ReportDutyForm reportForm = new ReportDutyForm();
+                reportForm.dutyForm = this;
+                reportForm.stDate = dateTimePicker1.Value;
+                reportForm.enDate = dateTimePicker2.Value;
+                reportForm.markreport = "3";
+                reportForm.Visible = true;
+                this.Visible = false;
+            }
         }
 
         private void PeriodForm_FormClosed(object sender, FormClosedEventArgs e)

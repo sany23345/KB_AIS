@@ -177,5 +177,32 @@ namespace KB_AIS
             passwodChangeForm.Visible = true;
             this.Enabled = false;
         }
+
+        private void рабочееВремяЗаТекущийМесяцToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportDutyForm reportForm = new ReportDutyForm();
+            reportForm.markreport = "1";
+            reportForm.dutyForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void заТекущийГодToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportDutyForm reportForm = new ReportDutyForm();
+            reportForm.markreport = "2";
+            reportForm.dutyForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void рабочееВремяЗаОпределенныйПериодToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PeriodForm periodForm = new PeriodForm();
+            periodForm.humanRDForm = this;
+            periodForm.mark = "3";
+            periodForm.Visible = true;
+            this.Visible = false;
+        }
     }
 }

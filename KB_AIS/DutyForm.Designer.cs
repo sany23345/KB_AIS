@@ -40,11 +40,11 @@ namespace KB_AIS
             this.goingWorkMarkButton = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.рабочееВремяЗаДеньToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рабочееВремяЗаТекущийМесяцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.заТекущийГодToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -150,8 +150,8 @@ namespace KB_AIS
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.рабочееВремяЗаДеньToolStripMenuItem,
             this.рабочееВремяЗаТекущийМесяцToolStripMenuItem,
+            this.заТекущийГодToolStripMenuItem,
             this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem});
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -159,23 +159,19 @@ namespace KB_AIS
             this.toolStripButton1.Size = new System.Drawing.Size(61, 22);
             this.toolStripButton1.Text = "Отчеты";
             // 
-            // рабочееВремяЗаДеньToolStripMenuItem
-            // 
-            this.рабочееВремяЗаДеньToolStripMenuItem.Name = "рабочееВремяЗаДеньToolStripMenuItem";
-            this.рабочееВремяЗаДеньToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
-            this.рабочееВремяЗаДеньToolStripMenuItem.Text = "Рабочее время за текущий день";
-            // 
             // рабочееВремяЗаТекущийМесяцToolStripMenuItem
             // 
             this.рабочееВремяЗаТекущийМесяцToolStripMenuItem.Name = "рабочееВремяЗаТекущийМесяцToolStripMenuItem";
             this.рабочееВремяЗаТекущийМесяцToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
             this.рабочееВремяЗаТекущийМесяцToolStripMenuItem.Text = "Рабочее время за текущий месяц";
+            this.рабочееВремяЗаТекущийМесяцToolStripMenuItem.Click += new System.EventHandler(this.рабочееВремяЗаТекущийМесяцToolStripMenuItem_Click);
             // 
             // рабочееВремяЗаОпределенныйПериодToolStripMenuItem
             // 
             this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem.Name = "рабочееВремяЗаОпределенныйПериодToolStripMenuItem";
             this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
             this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem.Text = "Рабочее время за определенный период";
+            this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem.Click += new System.EventHandler(this.рабочееВремяЗаОпределенныйПериодToolStripMenuItem_Click);
             // 
             // toolStripButton2
             // 
@@ -185,7 +181,7 @@ namespace KB_AIS
             this.toolStripButton2.Margin = new System.Windows.Forms.Padding(757, 1, 0, 2);
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripButton2.Size = new System.Drawing.Size(46, 22);
+            this.toolStripButton2.Size = new System.Drawing.Size(46, 19);
             this.toolStripButton2.Text = "Выход";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -193,6 +189,13 @@ namespace KB_AIS
             // 
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // заТекущийГодToolStripMenuItem
+            // 
+            this.заТекущийГодToolStripMenuItem.Name = "заТекущийГодToolStripMenuItem";
+            this.заТекущийГодToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
+            this.заТекущийГодToolStripMenuItem.Text = "Рабочее время за текущий год";
+            this.заТекущийГодToolStripMenuItem.Click += new System.EventHandler(this.заТекущийГодToolStripMenuItem_Click);
             // 
             // DutyForm
             // 
@@ -235,10 +238,10 @@ namespace KB_AIS
         private System.Windows.Forms.Button goingWorkMarkButton;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton1;
-        private System.Windows.Forms.ToolStripMenuItem рабочееВремяЗаДеньToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рабочееВремяЗаТекущийМесяцToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рабочееВремяЗаОпределенныйПериодToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem заТекущийГодToolStripMenuItem;
     }
 }
