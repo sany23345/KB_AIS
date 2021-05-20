@@ -29,6 +29,7 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PeriodForm));
             this.backButton = new System.Windows.Forms.Button();
             this.proceedButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -118,6 +119,7 @@ namespace KB_AIS
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PeriodForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

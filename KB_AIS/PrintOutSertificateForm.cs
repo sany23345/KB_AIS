@@ -1,13 +1,7 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -15,8 +9,7 @@ namespace KB_AIS
 {
     public partial class PrintOutSertificateForm : Form
     {
-        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
-        static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
         public string id;
         public Form humanRDForm;

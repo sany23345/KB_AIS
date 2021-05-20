@@ -30,6 +30,7 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Avtorisation));
             this.enterButton = new System.Windows.Forms.Button();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.loginTexBox = new System.Windows.Forms.TextBox();
@@ -109,9 +110,10 @@ namespace KB_AIS
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Avtorisation";
-            this.Text = "Авторизация";
+            this.Text = "Avtorisation";
             this.ResumeLayout(false);
             this.PerformLayout();
 

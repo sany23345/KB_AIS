@@ -31,6 +31,7 @@ namespace KB_AIS
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportDutyForm));
             this.StaffBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ReportDuty = new KB_AIS.ReportDuty();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -67,6 +68,7 @@ namespace KB_AIS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportDutyForm";
             this.Text = "ReportDutyForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReportDutyForm_FormClosed);

@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace KB_AIS
 {
@@ -42,11 +36,15 @@ namespace KB_AIS
 
         public void RefreshTable() //метод для обновления таблицы
         {
-            string query = @"Select Сотрудники.ID,[ФИО],[Серия_паспорта],[Номер_паспорта],
-            [Контактный_телефон],Должности.Название_должности,[Пароль], Удостоверение.Дата_выдачи, Удостоверение.Дата_истечения_срока_действия from  Сотрудники
-            Inner join Должности on Должности.ID = Сотрудники.Должность			
-			Inner join Удостоверение on Удостоверение.ID=Сотрудники.ID
-            Where Удалено=0";
+            string query = @"Select Сотрудники.Табельный_номер,Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО],Сотрудники.Серия_паспорта,
+                Сотрудники.Номер_паспорта,Сотрудники.Номер_телефона,Должности.Название_должности,Удостоверение.Номер_удостоверения,
+                Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
+                inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
+                inner join Должности on Должности.ID=История_изменений_должностей.ID_Должности
+                inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
+                inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
+                where Действителен_по = ( SELECT max(Действителен_по)
+                      FROM История_продления_удостоверений) and Истекло=0";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();      
@@ -91,19 +89,19 @@ namespace KB_AIS
             finishDateTimePicker.MaxDate = DateTime.Now;
             startDateTimePicker.MaxDate = DateTime.Now;
 
-            query = @"Select Пароль from Сотрудники  
-                                where ID='" + IdPeople + "' ";
-            sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            pass = dataTable.Rows[0]["Пароль"].ToString();
+            //query = @"Select Пароль from Сотрудники  
+            //                    where ID='" + IdPeople + "' ";
+            //sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            //dataTable = new DataTable();
+            //sqlDataAdapter.Fill(dataTable);
+            //pass = dataTable.Rows[0]["Пароль"].ToString();
 
 
 
-            if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
-            {
-                timer1.Start();
-            }
+            //if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
+            //{
+            //    timer1.Start();
+            //}
         }
 
         private void HumanResourcesDepartmentForm_FormClosed(object sender, FormClosedEventArgs e) //событие при закрытии формы
@@ -114,7 +112,7 @@ namespace KB_AIS
         private void searchNameTextBox_TextChanged(object sender, EventArgs e) //событие при вводе в TextBox ФИО сотрудника
         {
             string query = @"Select Сотрудники.ID,[ФИО],[Серия_паспорта],[Номер_паспорта],
-            [Контактный_телефон],Должности.Название_должности,[Пароль], Удостоверение.Дата_выдачи, Удостоверение.Дата_истечения_срока_действия from  Сотрудники
+            [Контактный_телефон],Должности.Название_должности, Удостоверение.Дата_выдачи, Удостоверение.Дата_истечения_срока_действия from  Сотрудники
             Inner join Должности on Должности.ID = Сотрудники.Должность
 			Inner join Удостоверение on Удостоверение.ID=Сотрудники.ID
             WHERE ФИО LIKE '" + searchNameTextBox.Text + "%' and Удалено=0;";
@@ -127,7 +125,7 @@ namespace KB_AIS
         private void searchDateTimePicker_ValueChanged(object sender, EventArgs e) //событие при вводе в DataTimePicker даты выдачи удостоверения сотрудника
         {
             string query = @"Select Сотрудники.ID,[ФИО],[Серия_паспорта],[Номер_паспорта],
-            [Контактный_телефон],Должности.Название_должности,[Пароль], Удостоверение.Дата_выдачи, Удостоверение.Дата_истечения_срока_действия from  Сотрудники
+            [Контактный_телефон],Должности.Название_должности, Удостоверение.Дата_выдачи, Удостоверение.Дата_истечения_срока_действия from  Сотрудники
             Inner join Должности on Должности.ID = Сотрудники.Должность
 			Inner join Удостоверение on Удостоверение.ID=Сотрудники.ID
             where  Удостоверение.Дата_выдачи = '" + searchDateTimePicker.Value.ToString("yyyy.MM.dd") + "' and Удалено=0";
@@ -192,7 +190,7 @@ namespace KB_AIS
             }
         }
 
-        private void deleteButton_Click(object sender, EventArgs e)
+        private void deleteButton_Click(object sender, EventArgs e) //событие по нажатию кнопки "Удалить запись"
         {
             DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить запись?", "Внимание!!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)

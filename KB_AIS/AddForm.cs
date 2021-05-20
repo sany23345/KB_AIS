@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Text;
+using System.Windows.Forms;
 
 namespace KB_AIS
 {
     public partial class AddForm : Form
     {
-        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
-        static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";   
         SqlConnection sqlConnection = new SqlConnection(connection);
         public Form humanRDForm;
         public AddForm()
@@ -32,6 +26,7 @@ namespace KB_AIS
             positioncomboBox.DataSource = dataTable;
             positioncomboBox.ValueMember = "ID";
             positioncomboBox.DisplayMember = "Название_должности";
+            expirationDateTimePicker.MinDate = DateTime.Now;
         }
 
         private void TextBoxIsLetter_KeyPress(object sender, KeyPressEventArgs e)
@@ -86,14 +81,21 @@ namespace KB_AIS
             humanRDForm.Visible = true;
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e) // событие по нажатию кнопки "Сохранить"
         {
+           
             if (!string.IsNullOrEmpty(surnameTextBox.Text)&& !string.IsNullOrEmpty(nameTextBox.Text) && !string.IsNullOrEmpty(patronymicTextBox.Text) &&
                 !string.IsNullOrEmpty(telephoneTextBox.Text) && !string.IsNullOrEmpty(idPassportTextBox.Text) && !string.IsNullOrEmpty(seriesPassportTextBox.Text))
             {
                 DialogResult dialogResult = MessageBox.Show("Вы действительно хотите сохранить данные?", "Внимание!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    if (dateOfIssueTimePicker.Value.ToString("yyyy.MM.dd")==expirationDateTimePicker.Value.ToString("yyyy.MM.dd"))
+                    {
+                        MessageBox.Show("Измените дату окончания срока дейсвия удостоверения!");
+                    }
+                    else
+                    {
                     string query = @" select Max(ID) from Удостоверение";
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
                     DataTable dataTable = new DataTable();
@@ -122,6 +124,8 @@ namespace KB_AIS
                     printOutSertificateForm.humanRDForm = this;
                     printOutSertificateForm.Visible = true;
                     this.Visible = false;
+                            
+                    }
                 }
             }
             else

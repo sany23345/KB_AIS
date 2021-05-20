@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KB_AIS
 {
     public partial class RedactForm : Form
     {
-        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
-        static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";   
         SqlConnection sqlConnection = new SqlConnection(connection);
         public Form humanRDForm;
         string id = "";
@@ -138,7 +131,7 @@ namespace KB_AIS
             OldDataExit = expirationDateTimePicker.Value.ToString("yyyy.MM.dd");
         }
 
-        private void searchByIdTextBox_TextChanged(object sender, EventArgs e)
+        private void searchByIdTextBox_TextChanged(object sender, EventArgs e) //событие поиска по номеру удостоверения сотрудника
         {
             string query = @"Select ID,ФИО from  Сотрудники  
                         Where Удалено=0 and ID like '"+searchByIdTextBox.Text+"%'";
@@ -148,7 +141,7 @@ namespace KB_AIS
             dataGridView1.DataSource = dataTable;
         }
 
-        private void searchNameTextBox_TextChanged(object sender, EventArgs e)
+        private void searchNameTextBox_TextChanged(object sender, EventArgs e) //событие поиска по фамилии сотрудника
         {
             string query = @"Select ID,ФИО from  Сотрудники  
                         Where Удалено=0 and ФИО like '" + searchNameTextBox.Text + "%'";
@@ -158,7 +151,7 @@ namespace KB_AIS
             dataGridView1.DataSource = dataTable;
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e) //событие по нажатию кнопки "Сохранить"
         {
             DialogResult dialogResult = MessageBox.Show("Вы точно уверены что хотите сохранить изменения???", "Предупреждение!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

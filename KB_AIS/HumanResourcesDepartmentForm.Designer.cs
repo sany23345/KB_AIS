@@ -79,6 +79,8 @@ namespace KB_AIS
             this.updateButton = new System.Windows.Forms.Button();
             this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label15 = new System.Windows.Forms.Label();
+            this.FiotextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -321,6 +323,8 @@ namespace KB_AIS
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.FiotextBox);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.label12);
@@ -353,7 +357,7 @@ namespace KB_AIS
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(775, 202);
+            this.label14.Location = new System.Drawing.Point(775, 249);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(121, 19);
@@ -363,7 +367,7 @@ namespace KB_AIS
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(775, 164);
+            this.label13.Location = new System.Drawing.Point(775, 211);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(114, 19);
@@ -373,7 +377,7 @@ namespace KB_AIS
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(775, 125);
+            this.label12.Location = new System.Drawing.Point(775, 172);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(125, 19);
@@ -383,7 +387,7 @@ namespace KB_AIS
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(775, 90);
+            this.label11.Location = new System.Drawing.Point(775, 137);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(182, 19);
@@ -393,7 +397,7 @@ namespace KB_AIS
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(775, 50);
+            this.label10.Location = new System.Drawing.Point(775, 97);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 19);
@@ -403,7 +407,7 @@ namespace KB_AIS
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(775, 15);
+            this.label9.Location = new System.Drawing.Point(775, 62);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(210, 19);
@@ -414,7 +418,7 @@ namespace KB_AIS
             // 
             this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Location = new System.Drawing.Point(795, 261);
+            this.saveButton.Location = new System.Drawing.Point(795, 308);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(520, 34);
@@ -481,7 +485,7 @@ namespace KB_AIS
             // 
             this.formEducationalComboBox.DisplayMember = "ID";
             this.formEducationalComboBox.FormattingEnabled = true;
-            this.formEducationalComboBox.Location = new System.Drawing.Point(993, 199);
+            this.formEducationalComboBox.Location = new System.Drawing.Point(993, 246);
             this.formEducationalComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.formEducationalComboBox.Name = "formEducationalComboBox";
             this.formEducationalComboBox.Size = new System.Drawing.Size(341, 27);
@@ -490,7 +494,7 @@ namespace KB_AIS
             // 
             // specialtyTextBox
             // 
-            this.specialtyTextBox.Location = new System.Drawing.Point(993, 161);
+            this.specialtyTextBox.Location = new System.Drawing.Point(993, 208);
             this.specialtyTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.specialtyTextBox.Name = "specialtyTextBox";
             this.specialtyTextBox.Size = new System.Drawing.Size(341, 26);
@@ -498,7 +502,7 @@ namespace KB_AIS
             // 
             // nameEducationalTextBox
             // 
-            this.nameEducationalTextBox.Location = new System.Drawing.Point(993, 8);
+            this.nameEducationalTextBox.Location = new System.Drawing.Point(993, 55);
             this.nameEducationalTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameEducationalTextBox.Name = "nameEducationalTextBox";
             this.nameEducationalTextBox.Size = new System.Drawing.Size(341, 26);
@@ -507,7 +511,7 @@ namespace KB_AIS
             // tupeEducationComboBox
             // 
             this.tupeEducationComboBox.FormattingEnabled = true;
-            this.tupeEducationComboBox.Location = new System.Drawing.Point(993, 122);
+            this.tupeEducationComboBox.Location = new System.Drawing.Point(993, 169);
             this.tupeEducationComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.tupeEducationComboBox.Name = "tupeEducationComboBox";
             this.tupeEducationComboBox.Size = new System.Drawing.Size(341, 27);
@@ -515,7 +519,7 @@ namespace KB_AIS
             // 
             // finishDateTimePicker
             // 
-            this.finishDateTimePicker.Location = new System.Drawing.Point(993, 84);
+            this.finishDateTimePicker.Location = new System.Drawing.Point(993, 131);
             this.finishDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.finishDateTimePicker.Name = "finishDateTimePicker";
             this.finishDateTimePicker.Size = new System.Drawing.Size(341, 26);
@@ -523,7 +527,7 @@ namespace KB_AIS
             // 
             // startDateTimePicker
             // 
-            this.startDateTimePicker.Location = new System.Drawing.Point(993, 44);
+            this.startDateTimePicker.Location = new System.Drawing.Point(993, 91);
             this.startDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.startDateTimePicker.Name = "startDateTimePicker";
             this.startDateTimePicker.Size = new System.Drawing.Size(341, 26);
@@ -582,6 +586,25 @@ namespace KB_AIS
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(774, 28);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 19);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "ФИО";
+            // 
+            // FiotextBox
+            // 
+            this.FiotextBox.Location = new System.Drawing.Point(992, 21);
+            this.FiotextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.FiotextBox.Name = "FiotextBox";
+            this.FiotextBox.ReadOnly = true;
+            this.FiotextBox.Size = new System.Drawing.Size(341, 26);
+            this.FiotextBox.TabIndex = 22;
+            // 
             // HumanResourcesDepartmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -596,6 +619,7 @@ namespace KB_AIS
             this.Controls.Add(this.searchNameTextBox);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HumanResourcesDepartmentForm";
             this.Text = "HumanResourcesDepartmentForm";
@@ -663,5 +687,7 @@ namespace KB_AIS
         private System.Windows.Forms.DateTimePicker searchDateTimePicker;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox FiotextBox;
     }
 }

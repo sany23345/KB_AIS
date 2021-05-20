@@ -29,6 +29,7 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrintOutSertificateForm));
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@ namespace KB_AIS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 510);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PrintOutSertificateForm";
             this.Text = "PrintOutSertificateForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PrintOutSertificateForm_FormClosed);

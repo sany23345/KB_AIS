@@ -29,6 +29,7 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedactForm));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cancellationButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
@@ -359,6 +360,7 @@ namespace KB_AIS
             this.Controls.Add(this.cancellationButton);
             this.Controls.Add(this.saveButton);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RedactForm";
             this.Text = "RedactForm";

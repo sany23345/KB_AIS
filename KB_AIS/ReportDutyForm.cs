@@ -1,13 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KB_AIS
@@ -19,8 +12,7 @@ namespace KB_AIS
         public string markreport;
         public Form dutyForm;
 
-        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
-        static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
 
         public ReportDutyForm()
@@ -44,7 +36,7 @@ namespace KB_AIS
 
                 SqlDataAdapter adapter = new SqlDataAdapter(queryString, sqlConnection);
                 adapter.Fill(ReportDuty.Staff);
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\saha3\source\repos\KB_AIS\KB_AIS\ReportDuty.rdlc";
+                //reportViewer1.LocalReport.ReportPath = @"C:\Users\saha3\source\repos\KB_AIS\KB_AIS\ReportDuty.rdlc";
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("StartDate", startDate.ToString("dd.MM.yyyy")));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("EndDate", endDate.ToString("dd.MM.yyyy")));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("NameReport", "по рабочему времени"));
@@ -60,7 +52,7 @@ namespace KB_AIS
 
                 SqlDataAdapter adapter = new SqlDataAdapter(queryString, sqlConnection);
                 adapter.Fill(ReportDuty.Staff);
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\saha3\source\repos\KB_AIS\KB_AIS\ReportDuty.rdlc";
+                //reportViewer1.LocalReport.ReportPath = @"C:\Users\saha3\source\repos\KB_AIS\KB_AIS\ReportDuty.rdlc";
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("StartDate", startDate.ToString("dd.MM.yyyy")));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("EndDate", endDate.ToString("dd.MM.yyyy")));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("NameReport", "по рабочему времени"));
@@ -74,7 +66,7 @@ namespace KB_AIS
 
                 SqlDataAdapter adapter = new SqlDataAdapter(queryString, sqlConnection);
                 adapter.Fill(ReportDuty.Staff);
-                reportViewer1.LocalReport.ReportPath = @"C:\Users\saha3\source\repos\KB_AIS\KB_AIS\ReportDuty.rdlc";
+                //reportViewer1.LocalReport.ReportPath = @"C:\Users\saha3\source\repos\KB_AIS\KB_AIS\ReportDuty.rdlc";
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("StartDate", stDate.ToString("dd.MM.yyyy")));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("EndDate", enDate.ToString("dd.MM.yyyy")));
                 reportViewer1.LocalReport.SetParameters(new ReportParameter("NameReport", "по рабочему времени"));
