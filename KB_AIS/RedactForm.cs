@@ -1,48 +1,46 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace KB_AIS
 {
     public partial class RedactForm : Form
     {
-        static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";   
+        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
         public Form humanRDForm;
-        string id = "";
-        string idPosition;
-        string OldData;
-        string OldDataExit;
-        string name, surname, patronymic, tel, seriaPassport, idPassport, position;
-        string[] mas;
+        string image;
         DataTable data = new DataTable();
+        string filePath;
         public RedactForm()
         {
             InitializeComponent();
         }
-        public void RefreshTable()
-        {
-           string query = @"Select ID,ФИО from  Сотрудники  Where Удалено=0";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-        }
 
         private void RedactForm_Load(object sender, EventArgs e)
         {
-            string query = "Select * from Должности";
+            string query = @"Select Сотрудники.Табельный_номер,Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО],Сотрудники.Серия_паспорта,
+                Сотрудники.Номер_паспорта,Сотрудники.Номер_телефона,Должности.Название_должности,Удостоверение.Номер_удостоверения,
+                Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
+                inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
+                inner join Должности on Должности.ID=История_изменений_должностей.ID_Должности
+                inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
+                inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
+                where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
+						 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0";
+
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
-            positioncomboBox.DataSource = dataTable;
-            positioncomboBox.ValueMember = "ID";
-            positioncomboBox.DisplayMember = "Название_должности";
-
-            RefreshTable();
-
-
+            searchByNameComboBox.ValueMember = "Табельный_номер";
+            searchByNameComboBox.DisplayMember = "ФИО";
+            searchByNameComboBox.DataSource = dataTable;
+            searchByNameComboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            searchByNameComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;          
         }
 
         private void TextBoxIsLetter_KeyPress(object sender, KeyPressEventArgs e)
@@ -84,6 +82,51 @@ namespace KB_AIS
             catch (Exception) { }
         }
 
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (searchByNameComboBox.DataSource != null)
+            {
+                string query = @"Select Сотрудники.Фото,Сотрудники.Табельный_номер,Сотрудники.Фамилия,Сотрудники.Имя,Сотрудники.Отчество,Сотрудники.Серия_паспорта,
+                Сотрудники.Номер_паспорта,Сотрудники.Номер_телефона,Должности.Название_должности,Удостоверение.Номер_удостоверения,
+                Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
+                inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
+                inner join Должности on Должности.ID=История_изменений_должностей.ID_Должности
+                inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
+                inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
+                where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
+						 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Табельный_номер='" + searchByNameComboBox.SelectedValue.ToString() + "'";
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+
+                pictureBox1.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTable.Rows[0]["Фото"].ToString())));
+                idPersonnelNumberTextBox.Text = dataTable.Rows[0]["Табельный_номер"].ToString();
+                idNumberTextBox.Text = dataTable.Rows[0]["Номер_удостоверения"].ToString();
+                surnameTextBox.Text = dataTable.Rows[0]["Фамилия"].ToString();
+                nameTextBox.Text = dataTable.Rows[0]["Имя"].ToString();
+                patronymicTextBox.Text = dataTable.Rows[0]["Отчество"].ToString();
+                seriesPassportTextBox.Text = dataTable.Rows[0]["Серия_паспорта"].ToString();
+                idPassportTextBox.Text = dataTable.Rows[0]["Номер_паспорта"].ToString();
+                telephoneTextBox.Text = dataTable.Rows[0]["Номер_телефона"].ToString();
+                positioncomboBox.Text = dataTable.Rows[0]["Название_должности"].ToString();
+            }
+        }
+
+        private void photoButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "png files (*.png)|*.png|jpg files(*.jpg)|*.jpg|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                filePath = openFileDialog1.FileName;
+                pictureBox1.Image = Image.FromFile(filePath);             
+            }
+        }
+
         private void cancellationButton_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -95,81 +138,21 @@ namespace KB_AIS
             humanRDForm.Visible = true;
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                id = row.Cells[0].Value.ToString();
-            }
-
-            string query = @"Select Сотрудники.ID,[ФИО],[Серия_паспорта],[Номер_паспорта],
-            [Контактный_телефон],Должности.Название_должности,[Пароль], Удостоверение.Дата_выдачи, Удостоверение.Дата_истечения_срока_действия from Сотрудники
-            Inner join Должности on Должности.ID = Сотрудники.Должность			
-			Inner join Удостоверение on Удостоверение.ID=Сотрудники.ID
-            where Сотрудники.ID = '" +id+ "';";
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(query,sqlConnection);
-           
-            dataAdapter.Fill(data);
-
-            mas = data.Rows[0]["ФИО"].ToString().Split(' ');
-
-            surnameTextBox.Text = mas[0];
-            nameTextBox.Text = mas[1];
-            patronymicTextBox.Text = mas[2];
-
-            seriesPassportTextBox.Text = data.Rows[0]["Серия_паспорта"].ToString();
-            idPassportTextBox.Text = data.Rows[0]["Номер_паспорта"].ToString();
-            telephoneTextBox.Text = data.Rows[0]["Контактный_телефон"].ToString();
-            positioncomboBox.Text = data.Rows[0]["Название_должности"].ToString();
-            dateOfIssueTimePicker.Value = DateTime.Parse(data.Rows[0]["Дата_выдачи"].ToString());
-            expirationDateTimePicker.Value = DateTime.Parse(data.Rows[0]["Дата_истечения_срока_действия"].ToString());
-            seriesPassportTextBox.Text = data.Rows[0]["Серия_паспорта"].ToString();
-
-            idPosition = positioncomboBox.SelectedValue.ToString();
-
-            OldData = dateOfIssueTimePicker.Value.ToString("yyyy.MM.dd");
-            OldDataExit = expirationDateTimePicker.Value.ToString("yyyy.MM.dd");
-        }
-
-        private void searchByIdTextBox_TextChanged(object sender, EventArgs e) //событие поиска по номеру удостоверения сотрудника
-        {
-            string query = @"Select ID,ФИО from  Сотрудники  
-                        Where Удалено=0 and ID like '"+searchByIdTextBox.Text+"%'";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-        }
-
-        private void searchNameTextBox_TextChanged(object sender, EventArgs e) //событие поиска по фамилии сотрудника
-        {
-            string query = @"Select ID,ФИО from  Сотрудники  
-                        Where Удалено=0 and ФИО like '" + searchNameTextBox.Text + "%'";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            DataTable dataTable = new DataTable();
-            sqlDataAdapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-        }
-
         private void saveButton_Click(object sender, EventArgs e) //событие по нажатию кнопки "Сохранить"
         {
             DialogResult dialogResult = MessageBox.Show("Вы точно уверены что хотите сохранить изменения???", "Предупреждение!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            image = Convert.ToBase64String(File.ReadAllBytes(filePath));
+
             if (dialogResult == DialogResult.Yes)
             {
-                string query = @"Update Удостоверение set Дата_выдачи= '" + dateOfIssueTimePicker.Value.ToString("yyyy.MM.dd") + "', Дата_истечения_срока_действия='" + expirationDateTimePicker.Value.ToString("yyyy.MM.dd") + "' where ID = '" + id + "';"
-                + "Update Сотрудники set ФИО= '" + surnameTextBox.Text +" "+nameTextBox.Text+" "+patronymicTextBox.Text+ "' ,Серия_паспорта= '" + seriesPassportTextBox.Text + "' ,Номер_паспорта= '" + idPassportTextBox.Text + "',"
-                + "Контактный_телефон= '" + telephoneTextBox.Text + "' , Должность ='" + positioncomboBox.SelectedValue + "' "
-                + "where ID = '" + id + "';" +
-                "Insert into История_выданых_удостоверений(id_Сотрудника,id_Удостоверения,Дата_Выдачи,Дата_Истечения_Срока_Действия) values ('" + id + "','" + id + "','" + OldData + "','" + OldDataExit + "');" +
-                " Insert into История_изменений (ID_Сотрудника,ФИО,Серия_паспорта,Номер_паспорта,Должность,Дата_изменения,Номер_телефона) " +
-                " values('"+ id + "', '" + mas[0] + " " + mas[1] + " " + mas[2] + "','" + data.Rows[0]["Серия_паспорта"].ToString() + "', '"+ data.Rows[0]["Номер_паспорта"].ToString() + "', '"+ idPosition+"', '" +DateTime.Now.ToString("yyyy.MM.dd")+"','"+data.Rows[0]["Контактный_телефон"] +"'); ";
+                string query = @"Update Сотрудники set 
+                    Фамилия='"+surnameTextBox.Text+"',Имя= '"+nameTextBox.Text+"', Отчество = '"+patronymicTextBox.Text+"',Серия_паспорта = '"+seriesPassportTextBox.Text+"',Номер_паспорта = '"+idPassportTextBox.Text+"',Номер_телефона = '"+telephoneTextBox.Text+"',Фото = '"+image+"'where Табельный_номер='" + searchByNameComboBox.SelectedValue.ToString() + "'";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 MessageBox.Show("Данные изменены");
-                RefreshTable();
             }
         }
     }

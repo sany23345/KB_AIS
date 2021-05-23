@@ -52,8 +52,12 @@ namespace KB_AIS
             this.label5 = new System.Windows.Forms.Label();
             this.cancellationButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -62,9 +66,9 @@ namespace KB_AIS
             this.groupBox2.Controls.Add(this.dateOfIssueTimePicker);
             this.groupBox2.Controls.Add(this.expirationDateTimePicker);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Location = new System.Drawing.Point(619, 12);
+            this.groupBox2.Location = new System.Drawing.Point(692, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(364, 269);
+            this.groupBox2.Size = new System.Drawing.Size(335, 269);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Удостоверение";
@@ -84,7 +88,7 @@ namespace KB_AIS
             this.dateOfIssueTimePicker.Location = new System.Drawing.Point(10, 52);
             this.dateOfIssueTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.dateOfIssueTimePicker.Name = "dateOfIssueTimePicker";
-            this.dateOfIssueTimePicker.Size = new System.Drawing.Size(347, 26);
+            this.dateOfIssueTimePicker.Size = new System.Drawing.Size(307, 26);
             this.dateOfIssueTimePicker.TabIndex = 82;
             // 
             // expirationDateTimePicker
@@ -92,7 +96,7 @@ namespace KB_AIS
             this.expirationDateTimePicker.Location = new System.Drawing.Point(11, 131);
             this.expirationDateTimePicker.Margin = new System.Windows.Forms.Padding(4);
             this.expirationDateTimePicker.Name = "expirationDateTimePicker";
-            this.expirationDateTimePicker.Size = new System.Drawing.Size(347, 26);
+            this.expirationDateTimePicker.Size = new System.Drawing.Size(307, 26);
             this.expirationDateTimePicker.TabIndex = 81;
             // 
             // label15
@@ -121,9 +125,9 @@ namespace KB_AIS
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(195, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(601, 269);
+            this.groupBox1.Size = new System.Drawing.Size(491, 269);
             this.groupBox1.TabIndex = 91;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Личные данные";
@@ -143,7 +147,7 @@ namespace KB_AIS
             this.surnameTextBox.Location = new System.Drawing.Point(189, 26);
             this.surnameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.surnameTextBox.Name = "surnameTextBox";
-            this.surnameTextBox.Size = new System.Drawing.Size(404, 26);
+            this.surnameTextBox.Size = new System.Drawing.Size(296, 26);
             this.surnameTextBox.TabIndex = 63;
             this.surnameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsLetter_KeyPress);
             // 
@@ -152,7 +156,7 @@ namespace KB_AIS
             this.patronymicTextBox.Location = new System.Drawing.Point(190, 94);
             this.patronymicTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.patronymicTextBox.Name = "patronymicTextBox";
-            this.patronymicTextBox.Size = new System.Drawing.Size(404, 26);
+            this.patronymicTextBox.Size = new System.Drawing.Size(296, 26);
             this.patronymicTextBox.TabIndex = 63;
             this.patronymicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsLetter_KeyPress);
             // 
@@ -161,7 +165,7 @@ namespace KB_AIS
             this.nameTextBox.Location = new System.Drawing.Point(189, 60);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(404, 26);
+            this.nameTextBox.Size = new System.Drawing.Size(296, 26);
             this.nameTextBox.TabIndex = 63;
             this.nameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsLetter_KeyPress);
             // 
@@ -171,7 +175,7 @@ namespace KB_AIS
             this.seriesPassportTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.seriesPassportTextBox.MaxLength = 4;
             this.seriesPassportTextBox.Name = "seriesPassportTextBox";
-            this.seriesPassportTextBox.Size = new System.Drawing.Size(404, 26);
+            this.seriesPassportTextBox.Size = new System.Drawing.Size(296, 26);
             this.seriesPassportTextBox.TabIndex = 64;
             this.seriesPassportTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsDigit_KeyPress);
             // 
@@ -181,7 +185,7 @@ namespace KB_AIS
             this.idPassportTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idPassportTextBox.MaxLength = 6;
             this.idPassportTextBox.Name = "idPassportTextBox";
-            this.idPassportTextBox.Size = new System.Drawing.Size(404, 26);
+            this.idPassportTextBox.Size = new System.Drawing.Size(296, 26);
             this.idPassportTextBox.TabIndex = 65;
             this.idPassportTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsDigit_KeyPress);
             // 
@@ -191,7 +195,7 @@ namespace KB_AIS
             this.telephoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.telephoneTextBox.MaxLength = 12;
             this.telephoneTextBox.Name = "telephoneTextBox";
-            this.telephoneTextBox.Size = new System.Drawing.Size(404, 26);
+            this.telephoneTextBox.Size = new System.Drawing.Size(296, 26);
             this.telephoneTextBox.TabIndex = 66;
             this.telephoneTextBox.TextChanged += new System.EventHandler(this.telephoneTextBox_TextChanged);
             this.telephoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsDigit_KeyPress);
@@ -200,10 +204,10 @@ namespace KB_AIS
             // 
             this.positioncomboBox.DisplayMember = "ID";
             this.positioncomboBox.FormattingEnabled = true;
-            this.positioncomboBox.Location = new System.Drawing.Point(189, 230);
+            this.positioncomboBox.Location = new System.Drawing.Point(190, 230);
             this.positioncomboBox.Margin = new System.Windows.Forms.Padding(4);
             this.positioncomboBox.Name = "positioncomboBox";
-            this.positioncomboBox.Size = new System.Drawing.Size(404, 27);
+            this.positioncomboBox.Size = new System.Drawing.Size(296, 27);
             this.positioncomboBox.TabIndex = 78;
             this.positioncomboBox.ValueMember = "ID";
             // 
@@ -260,7 +264,7 @@ namespace KB_AIS
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 233);
+            this.label5.Location = new System.Drawing.Point(10, 233);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(152, 19);
@@ -269,7 +273,7 @@ namespace KB_AIS
             // 
             // cancellationButton
             // 
-            this.cancellationButton.Location = new System.Drawing.Point(581, 288);
+            this.cancellationButton.Location = new System.Drawing.Point(678, 288);
             this.cancellationButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancellationButton.Name = "cancellationButton";
             this.cancellationButton.Size = new System.Drawing.Size(332, 34);
@@ -280,7 +284,7 @@ namespace KB_AIS
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(130, 288);
+            this.saveButton.Location = new System.Drawing.Point(208, 288);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(332, 34);
@@ -289,12 +293,38 @@ namespace KB_AIS
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(177, 184);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 93;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 202);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 37);
+            this.button1.TabIndex = 94;
+            this.button1.Text = "Добавить фото";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(992, 331);
+            this.ClientSize = new System.Drawing.Size(1030, 331);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cancellationButton);
@@ -310,6 +340,7 @@ namespace KB_AIS
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -338,5 +369,8 @@ namespace KB_AIS
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button cancellationButton;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

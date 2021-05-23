@@ -43,13 +43,15 @@ namespace KB_AIS
             this.positionTextBox = new System.Windows.Forms.TextBox();
             this.numberTextBox = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(13, 113);
+            this.label2.Location = new System.Drawing.Point(159, 116);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 19);
@@ -60,7 +62,7 @@ namespace KB_AIS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(13, 49);
+            this.label1.Location = new System.Drawing.Point(159, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 19);
@@ -71,7 +73,7 @@ namespace KB_AIS
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(114, 9);
+            this.label5.Location = new System.Drawing.Point(268, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(357, 29);
@@ -82,7 +84,7 @@ namespace KB_AIS
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(13, 177);
+            this.label4.Location = new System.Drawing.Point(159, 180);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(221, 19);
@@ -93,7 +95,7 @@ namespace KB_AIS
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(13, 145);
+            this.label3.Location = new System.Drawing.Point(159, 148);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(201, 19);
@@ -104,7 +106,7 @@ namespace KB_AIS
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(13, 81);
+            this.label6.Location = new System.Drawing.Point(159, 84);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 19);
@@ -113,42 +115,42 @@ namespace KB_AIS
             // 
             // fioTextBox
             // 
-            this.fioTextBox.Location = new System.Drawing.Point(241, 110);
+            this.fioTextBox.Location = new System.Drawing.Point(387, 113);
             this.fioTextBox.Name = "fioTextBox";
             this.fioTextBox.ReadOnly = true;
-            this.fioTextBox.Size = new System.Drawing.Size(348, 26);
+            this.fioTextBox.Size = new System.Drawing.Size(388, 26);
             this.fioTextBox.TabIndex = 15;
             // 
             // dataOfIssueTextBox
             // 
-            this.dataOfIssueTextBox.Location = new System.Drawing.Point(241, 142);
+            this.dataOfIssueTextBox.Location = new System.Drawing.Point(387, 145);
             this.dataOfIssueTextBox.Name = "dataOfIssueTextBox";
             this.dataOfIssueTextBox.ReadOnly = true;
-            this.dataOfIssueTextBox.Size = new System.Drawing.Size(348, 26);
+            this.dataOfIssueTextBox.Size = new System.Drawing.Size(388, 26);
             this.dataOfIssueTextBox.TabIndex = 16;
             // 
             // expirationDateTextBox
             // 
-            this.expirationDateTextBox.Location = new System.Drawing.Point(241, 174);
+            this.expirationDateTextBox.Location = new System.Drawing.Point(387, 177);
             this.expirationDateTextBox.Name = "expirationDateTextBox";
             this.expirationDateTextBox.ReadOnly = true;
-            this.expirationDateTextBox.Size = new System.Drawing.Size(348, 26);
+            this.expirationDateTextBox.Size = new System.Drawing.Size(388, 26);
             this.expirationDateTextBox.TabIndex = 17;
             // 
             // positionTextBox
             // 
-            this.positionTextBox.Location = new System.Drawing.Point(241, 78);
+            this.positionTextBox.Location = new System.Drawing.Point(387, 81);
             this.positionTextBox.Name = "positionTextBox";
             this.positionTextBox.ReadOnly = true;
-            this.positionTextBox.Size = new System.Drawing.Size(348, 26);
+            this.positionTextBox.Size = new System.Drawing.Size(388, 26);
             this.positionTextBox.TabIndex = 18;
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(241, 46);
+            this.numberTextBox.Location = new System.Drawing.Point(387, 49);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.ReadOnly = true;
-            this.numberTextBox.Size = new System.Drawing.Size(348, 26);
+            this.numberTextBox.Size = new System.Drawing.Size(388, 26);
             this.numberTextBox.TabIndex = 19;
             // 
             // timer1
@@ -156,13 +158,24 @@ namespace KB_AIS
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 52);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(140, 152);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // CertificateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(599, 210);
+            this.ClientSize = new System.Drawing.Size(787, 216);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.positionTextBox);
             this.Controls.Add(this.expirationDateTextBox);
@@ -181,6 +194,7 @@ namespace KB_AIS
             this.Text = "CertificateForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CertificateForm_FormClosed);
             this.Load += new System.EventHandler(this.CertificateForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +214,6 @@ namespace KB_AIS
         private System.Windows.Forms.TextBox positionTextBox;
         private System.Windows.Forms.TextBox numberTextBox;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

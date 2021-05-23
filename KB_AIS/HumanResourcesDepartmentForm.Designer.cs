@@ -36,8 +36,6 @@ namespace KB_AIS
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.deleteButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripDropDownButton();
             this.поВыданнымУдостоверениямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.заТекущийМесяцToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,13 +46,14 @@ namespace KB_AIS
             this.заТекущийГодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заОпределенныйПериодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.searchNameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.FiotextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -79,8 +78,11 @@ namespace KB_AIS
             this.updateButton = new System.Windows.Forms.Button();
             this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label15 = new System.Windows.Forms.Label();
-            this.FiotextBox = new System.Windows.Forms.TextBox();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.распечататьУдостоверениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.продлитьУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -118,26 +120,6 @@ namespace KB_AIS
             this.deleteButton.Size = new System.Drawing.Size(117, 23);
             this.deleteButton.Text = "Удалить запись";
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(300, 23);
-            this.toolStripButton5.Text = "История раннее выданных удостоверений";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(290, 23);
-            this.toolStripButton6.Text = "История изменения данных сотрудников";
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
             // toolStripButton4
             // 
@@ -220,9 +202,7 @@ namespace KB_AIS
             this.toolStripButton1,
             this.toolStripButton2,
             this.deleteButton,
-            this.toolStripButton5,
-            this.toolStripButton6,
-            this.toolStripButton3,
+            this.toolStripDropDownButton1,
             this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -230,16 +210,6 @@ namespace KB_AIS
             this.toolStrip1.Size = new System.Drawing.Size(1350, 26);
             this.toolStrip1.TabIndex = 20;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(198, 23);
-            this.toolStripButton3.Text = "Распечатать удостоверение";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // searchNameTextBox
             // 
@@ -289,7 +259,7 @@ namespace KB_AIS
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -308,15 +278,16 @@ namespace KB_AIS
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 4);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1342, 557);
+            this.dataGridView1.Size = new System.Drawing.Size(1334, 549);
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -353,6 +324,25 @@ namespace KB_AIS
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Образования сотрудника";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(774, 28);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 19);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "ФИО";
+            // 
+            // FiotextBox
+            // 
+            this.FiotextBox.Location = new System.Drawing.Point(992, 21);
+            this.FiotextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.FiotextBox.Name = "FiotextBox";
+            this.FiotextBox.ReadOnly = true;
+            this.FiotextBox.Size = new System.Drawing.Size(341, 26);
+            this.FiotextBox.TabIndex = 22;
             // 
             // label14
             // 
@@ -586,24 +576,47 @@ namespace KB_AIS
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label15
+            // toolStripDropDownButton1
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(774, 28);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 19);
-            this.label15.TabIndex = 23;
-            this.label15.Text = "ФИО";
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem,
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem,
+            this.распечататьУдостоверениеToolStripMenuItem,
+            this.продлитьУдостоверенияToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(201, 23);
+            this.toolStripDropDownButton1.Text = "Работа с удостоверениями";
             // 
-            // FiotextBox
+            // просмотрЛичногоУдостоверенияToolStripMenuItem
             // 
-            this.FiotextBox.Location = new System.Drawing.Point(992, 21);
-            this.FiotextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.FiotextBox.Name = "FiotextBox";
-            this.FiotextBox.ReadOnly = true;
-            this.FiotextBox.Size = new System.Drawing.Size(341, 26);
-            this.FiotextBox.TabIndex = 22;
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Name = "просмотрЛичногоУдостоверенияToolStripMenuItem";
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Text = "Просмотр личного удостоверения";
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // историяРаннееВыданныхУдостоверенийToolStripMenuItem
+            // 
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Name = "историяРаннееВыданныхУдостоверенийToolStripMenuItem";
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Text = "История раннее выданных удостоверений";
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // распечататьУдостоверениеToolStripMenuItem
+            // 
+            this.распечататьУдостоверениеToolStripMenuItem.Name = "распечататьУдостоверениеToolStripMenuItem";
+            this.распечататьУдостоверениеToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.распечататьУдостоверениеToolStripMenuItem.Text = "Распечатать удостоверение";
+            this.распечататьУдостоверениеToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // продлитьУдостоверенияToolStripMenuItem
+            // 
+            this.продлитьУдостоверенияToolStripMenuItem.Name = "продлитьУдостоверенияToolStripMenuItem";
+            this.продлитьУдостоверенияToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.продлитьУдостоверенияToolStripMenuItem.Text = "Продлить удостоверения";
+            this.продлитьУдостоверенияToolStripMenuItem.Click += new System.EventHandler(this.prolongationButton_Click);
             // 
             // HumanResourcesDepartmentForm
             // 
@@ -625,6 +638,7 @@ namespace KB_AIS
             this.Text = "HumanResourcesDepartmentForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HumanResourcesDepartmentForm_FormClosed);
             this.Load += new System.EventHandler(this.HumanResourcesDepartmentForm_Load);
+            this.Shown += new System.EventHandler(this.HumanResourcesDepartmentForm_Shown);
             this.VisibleChanged += new System.EventHandler(this.HumanResourcesDepartmentForm_VisibleChanged);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -644,8 +658,6 @@ namespace KB_AIS
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton deleteButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
-        private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripDropDownButton toolStripButton4;
         private System.Windows.Forms.ToolStripMenuItem поВыданнымУдостоверениямToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заТекущийМесяцToolStripMenuItem;
@@ -685,9 +697,13 @@ namespace KB_AIS
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.DateTimePicker searchDateTimePicker;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox FiotextBox;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem просмотрЛичногоУдостоверенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem историяРаннееВыданныхУдостоверенийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem распечататьУдостоверениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem продлитьУдостоверенияToolStripMenuItem;
     }
 }

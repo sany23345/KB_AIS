@@ -29,7 +29,7 @@ namespace KB_AIS
                     inner join  Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
                     inner join  Должности on Должности.ID=История_изменений_должностей.ID_Должности
                     inner join  Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
-                    where Табельный_номер='"+loginTexBox.Text+"' and Пароль='"+passwordTextBox.Text+"' and Истекло=0";
+                    where Табельный_номер='" + loginTexBox.Text+"' and Пароль='"+passwordTextBox.Text+"' and Истекло=0";
 
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
@@ -45,7 +45,7 @@ namespace KB_AIS
                 {
                     HumanResourcesDepartmentForm departmentForm = new HumanResourcesDepartmentForm();
                     departmentForm.avtorisaitionForm = this;
-                    departmentForm.IdPeople = dataTable.Rows[0][0].ToString();
+                    departmentForm.IdPeople = dataTable.Rows[0]["Табельный_номер"].ToString();
                     departmentForm.Visible = true;
                     this.Visible = false;
                 }
@@ -53,18 +53,14 @@ namespace KB_AIS
                 {
                     DutyForm dutyForm = new DutyForm();
                     dutyForm.avtorisationForm = this;
-                    dutyForm.IdPeople= dataTable.Rows[0][0].ToString(); 
+                    dutyForm.IdPeople= dataTable.Rows[0]["Табельный_номер"].ToString(); 
                     dutyForm.Visible = true;
                     this.Visible = false;
                 }
                 else 
                 {
                     CertificateForm certificateForm = new CertificateForm();
-                    certificateForm.id = dataTable.Rows[0][0].ToString();
-                    certificateForm.FIO = dataTable.Rows[0][1].ToString();
-                    certificateForm.position = dataTable.Rows[0][3].ToString();
-                    certificateForm.dateOfIssue = dataTable.Rows[0][4].ToString();
-                    certificateForm.expirationDate = dataTable.Rows[0][5].ToString();
+                    certificateForm.id = dataTable.Rows[0]["Табельный_номер"].ToString();
                     certificateForm.avtorisationForm = this;
                     certificateForm.Visible = true;
                     this.Visible = false;

@@ -60,9 +60,9 @@ namespace KB_AIS
             this.label2.Location = new System.Drawing.Point(494, 21);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 19);
+            this.label2.Size = new System.Drawing.Size(200, 19);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Поиск по номеру удостоверения";
+            this.label2.Text = "Поиск по табельном номеру";
             // 
             // searchByIdTextBox
             // 
