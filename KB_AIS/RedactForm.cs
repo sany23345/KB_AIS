@@ -94,7 +94,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
-						 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Табельный_номер='" + searchByNameComboBox.SelectedValue.ToString() + "'";
+			    where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Табельный_номер='" + searchByNameComboBox.SelectedValue.ToString() + "'";
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
                 DataTable dataTable = new DataTable();

@@ -174,7 +174,7 @@ namespace KB_AIS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(787, 216);
+            this.ClientSize = new System.Drawing.Size(787, 212);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.positionTextBox);

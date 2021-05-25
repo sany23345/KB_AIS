@@ -158,11 +158,11 @@ namespace KB_AIS
 
                         MessageBox.Show("Запись добавлена!!!");
 
-                        //PrintOutSertificateForm printOutSertificateForm = new PrintOutSertificateForm();
-                        //printOutSertificateForm.id = id.ToString();
-                        //printOutSertificateForm.humanRDForm = this;
-                        //printOutSertificateForm.Visible = true;
-                        //this.Visible = false;
+                        PrintOutSertificateForm printOutSertificateForm = new PrintOutSertificateForm();
+                        printOutSertificateForm.id = idCertification.ToString();
+                        printOutSertificateForm.humanRDForm = this;
+                        printOutSertificateForm.Visible = true;
+                        this.Visible = false;
                     }
                 }
             }
