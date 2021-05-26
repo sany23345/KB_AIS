@@ -12,6 +12,7 @@ namespace KB_AIS
         //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
+        DataTable dataTable = new DataTable();
 
         public Form avtorisationForm;
         string id;
@@ -34,16 +35,13 @@ namespace KB_AIS
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
                 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-               dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTable.Rows[i]["Фото"].ToString())));
-                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
-                dataGridView1.Rows[i].Cells[2].Value = dataTable.Rows[i]["ФИО"].ToString();
-
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
+                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["ФИО"].ToString();
             }
 
 
@@ -72,6 +70,7 @@ namespace KB_AIS
         private void searchByNameTextBox_TextChanged(object sender, EventArgs e) //событие поиска по фамилии сотрудника
         {
             dataGridView1.Rows.Clear();
+            dataTable.Clear();
             string query = @"Select Фото, Удостоверение.Номер_удостоверения, Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО]
                 from История_изменений_должностей
                 inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
@@ -82,21 +81,20 @@ namespace KB_AIS
                 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Фамилия like '" + searchByNameTextBox.Text+"%'";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTable.Rows[i]["Фото"].ToString())));
-                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
-                dataGridView1.Rows[i].Cells[2].Value = dataTable.Rows[i]["ФИО"].ToString();
+                dataGridView1.Rows[i].Cells[0].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
+                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["ФИО"].ToString();
             }
         }
 
         private void searchByIdTextBox_TextChanged(object sender, EventArgs e) //событие поиска по номеру удостоверения
         {
             dataGridView1.Rows.Clear();
+            dataTable.Clear();
             string query = @"Select Фото, Удостоверение.Номер_удостоверения, Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО]
                 from История_изменений_должностей
                 inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
@@ -107,15 +105,14 @@ namespace KB_AIS
                 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Удостоверение.Номер_удостоверения like '" + searchByIdTextBox.Text + "%'";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            DataTable dataTable = new DataTable();
+            
             sqlDataAdapter.Fill(dataTable);
 
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTable.Rows[i]["Фото"].ToString())));
-                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
-                dataGridView1.Rows[i].Cells[2].Value = dataTable.Rows[i]["ФИО"].ToString();
+                dataGridView1.Rows[i].Cells[0].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
+                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["ФИО"].ToString();
             }
         }
 
@@ -127,10 +124,10 @@ namespace KB_AIS
                 string query = @"select * from Рабочее_время
                             where Номер_удостоверения='" + id + "' and Конец_рабочего_времени BETWEEN '" + DateTime.Now.ToString("yyyyMMdd") + "' AND '" + DateTime.Now.AddDays(1).ToString("yyyyMMdd") + "'";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTableTime = new DataTable();
+                sqlDataAdapter.Fill(dataTableTime);
 
-                if (dataTable.Rows.Count == 0)
+                if (dataTableTime.Rows.Count == 0)
                 {
                     query = @"UPDATE Рабочее_время set Конец_рабочего_времени='" + DateTime.Now.ToString("yyyyMMdd HH:mm:00") + "' where Номер_удостоверения='" + id + "'";
                     SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
@@ -139,7 +136,7 @@ namespace KB_AIS
                     sqlConnection.Close();
                     MessageBox.Show("Отметка принята, дата и время окончания работы " + DateTime.Now.ToString("yyyy.MM.dd HH:mm:00"));
                 }
-                else if (dataTable.Rows.Count > 0)
+                else if (dataTableTime.Rows.Count > 0)
                 {
                     MessageBox.Show("Отметка уже была принята сегодня");
                 }
@@ -154,14 +151,14 @@ namespace KB_AIS
                 string query = @"select * from Рабочее_время
                             where Номер_удостоверения='" + id + "' and Начало_рабочего_времени BETWEEN '" + DateTime.Now.ToString("yyyyMMdd") + "' AND '" + DateTime.Now.AddDays(1).ToString("yyyyMMdd") + "'";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
+                DataTable dataTableTime = new DataTable();
+                sqlDataAdapter.Fill(dataTableTime);
 
-                if (dataTable.Rows.Count > 0)
+                if (dataTableTime.Rows.Count > 0)
                 {
                     MessageBox.Show("Отметка уже была принята сегодня");
                 }
-                else if (dataTable.Rows.Count == 0)
+                else if (dataTableTime.Rows.Count == 0)
                 {
                     query = @" Insert into Рабочее_время values('" + id + "','" + DateTime.Now.ToString("yyyyMMdd HH:mm:00") + "','')";
                     SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
@@ -177,7 +174,8 @@ namespace KB_AIS
         {
             foreach (DataGridViewRow item in dataGridView1.SelectedRows) //выбираем в строке только id по которому будем редактировать
             {
-                id = item.Cells[1].Value.ToString();
+                id = item.Cells[0].Value.ToString();
+                pictureBox2.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTable.Rows[e.RowIndex]["Фото"].ToString())));
             }
         }
 

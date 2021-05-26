@@ -31,8 +31,8 @@ namespace KB_AIS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanResourcesDepartmentForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.deleteButton = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +46,11 @@ namespace KB_AIS
             this.заТекущийГодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заОпределенныйПериодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.распечататьУдостоверениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.продлитьУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchNameTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,11 +83,8 @@ namespace KB_AIS
             this.updateButton = new System.Windows.Forms.Button();
             this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.просмотрЛичногоУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.распечататьУдостоверениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.продлитьУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменениеДолжностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.восстановитьУдостоверениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -211,6 +213,50 @@ namespace KB_AIS
             this.toolStrip1.TabIndex = 20;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem,
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem,
+            this.распечататьУдостоверениеToolStripMenuItem,
+            this.продлитьУдостоверенияToolStripMenuItem,
+            this.изменениеДолжностиToolStripMenuItem,
+            this.восстановитьУдостоверениеToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(201, 23);
+            this.toolStripDropDownButton1.Text = "Работа с удостоверениями";
+            // 
+            // просмотрЛичногоУдостоверенияToolStripMenuItem
+            // 
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Name = "просмотрЛичногоУдостоверенияToolStripMenuItem";
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Text = "Просмотр личного удостоверения";
+            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // историяРаннееВыданныхУдостоверенийToolStripMenuItem
+            // 
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Name = "историяРаннееВыданныхУдостоверенийToolStripMenuItem";
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Text = "История раннее выданных удостоверений";
+            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // распечататьУдостоверениеToolStripMenuItem
+            // 
+            this.распечататьУдостоверениеToolStripMenuItem.Name = "распечататьУдостоверениеToolStripMenuItem";
+            this.распечататьУдостоверениеToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.распечататьУдостоверениеToolStripMenuItem.Text = "Распечатать удостоверение";
+            this.распечататьУдостоверениеToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // продлитьУдостоверенияToolStripMenuItem
+            // 
+            this.продлитьУдостоверенияToolStripMenuItem.Name = "продлитьУдостоверенияToolStripMenuItem";
+            this.продлитьУдостоверенияToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.продлитьУдостоверенияToolStripMenuItem.Text = "Продление удостоверения";
+            this.продлитьУдостоверенияToolStripMenuItem.Click += new System.EventHandler(this.prolongationButton_Click);
+            // 
             // searchNameTextBox
             // 
             this.searchNameTextBox.Location = new System.Drawing.Point(144, 38);
@@ -261,23 +307,23 @@ namespace KB_AIS
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.Location = new System.Drawing.Point(4, 4);
@@ -576,47 +622,18 @@ namespace KB_AIS
             this.timer1.Interval = 300;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // toolStripDropDownButton1
+            // изменениеДолжностиToolStripMenuItem
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.просмотрЛичногоУдостоверенияToolStripMenuItem,
-            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem,
-            this.распечататьУдостоверениеToolStripMenuItem,
-            this.продлитьУдостоверенияToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(201, 23);
-            this.toolStripDropDownButton1.Text = "Работа с удостоверениями";
+            this.изменениеДолжностиToolStripMenuItem.Name = "изменениеДолжностиToolStripMenuItem";
+            this.изменениеДолжностиToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.изменениеДолжностиToolStripMenuItem.Text = "Изменение должности";
+            this.изменениеДолжностиToolStripMenuItem.Click += new System.EventHandler(this.изменениеДолжностиToolStripMenuItem_Click);
             // 
-            // просмотрЛичногоУдостоверенияToolStripMenuItem
+            // восстановитьУдостоверениеToolStripMenuItem
             // 
-            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Name = "просмотрЛичногоУдостоверенияToolStripMenuItem";
-            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
-            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Text = "Просмотр личного удостоверения";
-            this.просмотрЛичногоУдостоверенияToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // историяРаннееВыданныхУдостоверенийToolStripMenuItem
-            // 
-            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Name = "историяРаннееВыданныхУдостоверенийToolStripMenuItem";
-            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
-            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Text = "История раннее выданных удостоверений";
-            this.историяРаннееВыданныхУдостоверенийToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
-            // распечататьУдостоверениеToolStripMenuItem
-            // 
-            this.распечататьУдостоверениеToolStripMenuItem.Name = "распечататьУдостоверениеToolStripMenuItem";
-            this.распечататьУдостоверениеToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
-            this.распечататьУдостоверениеToolStripMenuItem.Text = "Распечатать удостоверение";
-            this.распечататьУдостоверениеToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // продлитьУдостоверенияToolStripMenuItem
-            // 
-            this.продлитьУдостоверенияToolStripMenuItem.Name = "продлитьУдостоверенияToolStripMenuItem";
-            this.продлитьУдостоверенияToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
-            this.продлитьУдостоверенияToolStripMenuItem.Text = "Продлить удостоверения";
-            this.продлитьУдостоверенияToolStripMenuItem.Click += new System.EventHandler(this.prolongationButton_Click);
+            this.восстановитьУдостоверениеToolStripMenuItem.Name = "восстановитьУдостоверениеToolStripMenuItem";
+            this.восстановитьУдостоверениеToolStripMenuItem.Size = new System.Drawing.Size(365, 24);
+            this.восстановитьУдостоверениеToolStripMenuItem.Text = "Восстановить удостоверение";
             // 
             // HumanResourcesDepartmentForm
             // 
@@ -705,5 +722,7 @@ namespace KB_AIS
         private System.Windows.Forms.ToolStripMenuItem историяРаннееВыданныхУдостоверенийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem распечататьУдостоверениеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem продлитьУдостоверенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem изменениеДолжностиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem восстановитьУдостоверениеToolStripMenuItem;
     }
 }

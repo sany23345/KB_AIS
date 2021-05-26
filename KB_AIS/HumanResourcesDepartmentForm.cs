@@ -44,7 +44,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
-						 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0";
+						 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Истекло=0";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();      
@@ -108,7 +108,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = ( SELECT max(Действителен_по)
-                      FROM История_продления_удостоверений) and Удалено=0 and Фамилия like '"+ searchNameTextBox.Text + "%';";
+                      FROM История_продления_удостоверений) and Удалено=0 and Фамилия like '"+ searchNameTextBox.Text + "%' and Истекло=0;";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -125,7 +125,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = ( SELECT max(Действителен_по)
-                      FROM История_продления_удостоверений) and Удалено=0 and Дата_выдачи ='"+searchDateTimePicker.Value+"';";
+                      FROM История_продления_удостоверений) and Удалено=0 and Дата_выдачи ='"+searchDateTimePicker.Value+ "' and Истекло=0;";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -318,7 +318,7 @@ namespace KB_AIS
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
                 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and 
-                Удалено=0 and DATENAME(MONTH,Действителен_по)+'-'+DATENAME(YEAR,Действителен_по)=DATENAME(MONTH,GETDATE())+'-'+DATENAME(YEAR,GETDATE())";
+                Удалено=0 and DATENAME(MONTH,Действителен_по)+'-'+DATENAME(YEAR,Действителен_по)=DATENAME(MONTH,GETDATE())+'-'+DATENAME(YEAR,GETDATE()) and Истекло=0 ";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
             DataTable dataTableProlonfation = new DataTable();
             sqlDataAdapter.Fill(dataTableProlonfation);
@@ -361,6 +361,14 @@ namespace KB_AIS
             certificateForm.id = IdPeople;
             certificateForm.avtorisationForm = this;
             certificateForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void изменениеДолжностиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WorkCertificationForm workCertificationForm = new WorkCertificationForm();
+            workCertificationForm.HRDForm = this;
+            workCertificationForm.Visible = true;
             this.Visible = false;
         }
 

@@ -32,7 +32,6 @@ namespace KB_AIS
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedactForm));
             this.cancellationButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -51,7 +50,6 @@ namespace KB_AIS
             this.seriesPassportTextBox = new System.Windows.Forms.TextBox();
             this.idPassportTextBox = new System.Windows.Forms.TextBox();
             this.telephoneTextBox = new System.Windows.Forms.TextBox();
-            this.positioncomboBox = new System.Windows.Forms.ComboBox();
             this.searchByNameComboBox = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.photoButton = new System.Windows.Forms.Button();
@@ -77,24 +75,14 @@ namespace KB_AIS
             // 
             this.saveButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveButton.Location = new System.Drawing.Point(12, 283);
+            this.saveButton.Location = new System.Drawing.Point(13, 280);
             this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(197, 34);
+            this.saveButton.Size = new System.Drawing.Size(196, 34);
             this.saveButton.TabIndex = 119;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 290);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(152, 19);
-            this.label14.TabIndex = 118;
-            this.label14.Text = "Название должности";
             // 
             // label17
             // 
@@ -178,17 +166,15 @@ namespace KB_AIS
             this.groupBox1.Controls.Add(this.seriesPassportTextBox);
             this.groupBox1.Controls.Add(this.idPassportTextBox);
             this.groupBox1.Controls.Add(this.telephoneTextBox);
-            this.groupBox1.Controls.Add(this.positioncomboBox);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Location = new System.Drawing.Point(216, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(561, 322);
+            this.groupBox1.Size = new System.Drawing.Size(561, 288);
             this.groupBox1.TabIndex = 141;
             this.groupBox1.TabStop = false;
             // 
@@ -288,17 +274,6 @@ namespace KB_AIS
             this.telephoneTextBox.TextChanged += new System.EventHandler(this.telephoneTextBox_TextChanged);
             this.telephoneTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxIsDigit_KeyPress);
             // 
-            // positioncomboBox
-            // 
-            this.positioncomboBox.DisplayMember = "ID";
-            this.positioncomboBox.FormattingEnabled = true;
-            this.positioncomboBox.Location = new System.Drawing.Point(180, 287);
-            this.positioncomboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.positioncomboBox.Name = "positioncomboBox";
-            this.positioncomboBox.Size = new System.Drawing.Size(370, 27);
-            this.positioncomboBox.TabIndex = 145;
-            this.positioncomboBox.ValueMember = "ID";
-            // 
             // searchByNameComboBox
             // 
             this.searchByNameComboBox.FormattingEnabled = true;
@@ -340,7 +315,7 @@ namespace KB_AIS
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(788, 373);
+            this.ClientSize = new System.Drawing.Size(788, 331);
             this.Controls.Add(this.photoButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.searchByNameComboBox);
@@ -366,7 +341,6 @@ namespace KB_AIS
         #endregion
         private System.Windows.Forms.Button cancellationButton;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -381,7 +355,6 @@ namespace KB_AIS
         private System.Windows.Forms.TextBox seriesPassportTextBox;
         private System.Windows.Forms.TextBox idPassportTextBox;
         private System.Windows.Forms.TextBox telephoneTextBox;
-        private System.Windows.Forms.ComboBox positioncomboBox;
         private System.Windows.Forms.ComboBox searchByNameComboBox;
         private System.Windows.Forms.TextBox idNumberTextBox;
         private System.Windows.Forms.Label label4;

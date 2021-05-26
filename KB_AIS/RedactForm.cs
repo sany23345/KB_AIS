@@ -109,7 +109,6 @@ namespace KB_AIS
                 seriesPassportTextBox.Text = dataTable.Rows[0]["Серия_паспорта"].ToString();
                 idPassportTextBox.Text = dataTable.Rows[0]["Номер_паспорта"].ToString();
                 telephoneTextBox.Text = dataTable.Rows[0]["Номер_телефона"].ToString();
-                positioncomboBox.Text = dataTable.Rows[0]["Название_должности"].ToString();
             }
         }
 

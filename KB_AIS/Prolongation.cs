@@ -77,7 +77,7 @@ namespace KB_AIS
             }
             else
             {
-                MessageBox.Show("Выбирите удостоверение!");
+                MessageBox.Show("Выберите удостоверение!");
             }
         }
 

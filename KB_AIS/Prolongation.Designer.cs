@@ -88,7 +88,7 @@ namespace KB_AIS
             this.prolongationButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
             this.prolongationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.prolongationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.prolongationButton.Location = new System.Drawing.Point(655, 207);
+            this.prolongationButton.Location = new System.Drawing.Point(654, 207);
             this.prolongationButton.Margin = new System.Windows.Forms.Padding(4);
             this.prolongationButton.Name = "prolongationButton";
             this.prolongationButton.Size = new System.Drawing.Size(193, 36);
@@ -122,7 +122,7 @@ namespace KB_AIS
             // 
             // numberTextBox
             // 
-            this.numberTextBox.Location = new System.Drawing.Point(589, 44);
+            this.numberTextBox.Location = new System.Drawing.Point(589, 40);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.ReadOnly = true;
             this.numberTextBox.Size = new System.Drawing.Size(259, 26);
@@ -153,7 +153,7 @@ namespace KB_AIS
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Prolongation";
             this.Text = "Prolongation";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Prolongation_FormClosed);
