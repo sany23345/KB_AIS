@@ -44,6 +44,7 @@ namespace KB_AIS
             this.numberTextBox = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.enterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,7 +119,7 @@ namespace KB_AIS
             this.fioTextBox.Location = new System.Drawing.Point(387, 113);
             this.fioTextBox.Name = "fioTextBox";
             this.fioTextBox.ReadOnly = true;
-            this.fioTextBox.Size = new System.Drawing.Size(388, 26);
+            this.fioTextBox.Size = new System.Drawing.Size(385, 26);
             this.fioTextBox.TabIndex = 15;
             // 
             // dataOfIssueTextBox
@@ -126,7 +127,7 @@ namespace KB_AIS
             this.dataOfIssueTextBox.Location = new System.Drawing.Point(387, 145);
             this.dataOfIssueTextBox.Name = "dataOfIssueTextBox";
             this.dataOfIssueTextBox.ReadOnly = true;
-            this.dataOfIssueTextBox.Size = new System.Drawing.Size(388, 26);
+            this.dataOfIssueTextBox.Size = new System.Drawing.Size(385, 26);
             this.dataOfIssueTextBox.TabIndex = 16;
             // 
             // expirationDateTextBox
@@ -134,7 +135,7 @@ namespace KB_AIS
             this.expirationDateTextBox.Location = new System.Drawing.Point(387, 177);
             this.expirationDateTextBox.Name = "expirationDateTextBox";
             this.expirationDateTextBox.ReadOnly = true;
-            this.expirationDateTextBox.Size = new System.Drawing.Size(388, 26);
+            this.expirationDateTextBox.Size = new System.Drawing.Size(385, 26);
             this.expirationDateTextBox.TabIndex = 17;
             // 
             // positionTextBox
@@ -142,7 +143,7 @@ namespace KB_AIS
             this.positionTextBox.Location = new System.Drawing.Point(387, 81);
             this.positionTextBox.Name = "positionTextBox";
             this.positionTextBox.ReadOnly = true;
-            this.positionTextBox.Size = new System.Drawing.Size(388, 26);
+            this.positionTextBox.Size = new System.Drawing.Size(385, 26);
             this.positionTextBox.TabIndex = 18;
             // 
             // numberTextBox
@@ -150,7 +151,7 @@ namespace KB_AIS
             this.numberTextBox.Location = new System.Drawing.Point(387, 49);
             this.numberTextBox.Name = "numberTextBox";
             this.numberTextBox.ReadOnly = true;
-            this.numberTextBox.Size = new System.Drawing.Size(388, 26);
+            this.numberTextBox.Size = new System.Drawing.Size(385, 26);
             this.numberTextBox.TabIndex = 19;
             // 
             // timer1
@@ -168,13 +169,29 @@ namespace KB_AIS
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
+            // enterButton
+            // 
+            this.enterButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.enterButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.enterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enterButton.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enterButton.Location = new System.Drawing.Point(387, 213);
+            this.enterButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.enterButton.Name = "enterButton";
+            this.enterButton.Size = new System.Drawing.Size(385, 29);
+            this.enterButton.TabIndex = 21;
+            this.enterButton.Text = "Просмотр рабочего времени";
+            this.enterButton.UseVisualStyleBackColor = true;
+            this.enterButton.Click += new System.EventHandler(this.enterButton_Click);
+            // 
             // CertificateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(787, 212);
+            this.ClientSize = new System.Drawing.Size(787, 260);
+            this.Controls.Add(this.enterButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.numberTextBox);
             this.Controls.Add(this.positionTextBox);
@@ -215,5 +232,6 @@ namespace KB_AIS
         private System.Windows.Forms.TextBox numberTextBox;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button enterButton;
     }
 }

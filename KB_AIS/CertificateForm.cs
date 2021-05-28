@@ -51,7 +51,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей = История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения = Удостоверение.Номер_удостоверения
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений
-                where История_продления_удостоверений.Номер_удостоверения = Удостоверение.Номер_удостоверения) and Удалено = 0  and Табельный_номер = '"+ id + "'";
+                where История_продления_удостоверений.Номер_удостоверения = Удостоверение.Номер_удостоверения) and Удалено = 0  and Табельный_номер = '"+ id + "'and Истекло=0";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(quary,sqlConnection);
             DataTable dataTable = new DataTable();
@@ -80,6 +80,16 @@ namespace KB_AIS
         public CertificateForm()
         {
             InitializeComponent();
+        }
+
+        private void enterButton_Click(object sender, EventArgs e)
+        {
+            ReportDutyForm reportForm = new ReportDutyForm();
+            reportForm.markreport = "4";
+            reportForm.idCertificate = numberTextBox.Text;
+            reportForm.dutyForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
         }
     }
 }

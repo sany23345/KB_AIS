@@ -30,37 +30,32 @@ namespace KB_AIS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
-            this.DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Report = new KB_AIS.Report();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
+            this.Report = new KB_AIS.Report();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Report)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
-            // DataTable1BindingSource
+            // reportViewer1
             // 
-            this.DataTable1BindingSource.DataMember = "DataTable1";
-            this.DataTable1BindingSource.DataSource = this.Report;
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "KB_AIS.ReportSOC.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(40, 12);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(700, 246);
+            this.reportViewer1.TabIndex = 0;
             // 
             // Report
             // 
             this.Report.DataSetName = "Report";
             this.Report.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer1
+            // bindingSource1
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.DataTable1BindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "KB_AIS.ReportSOC.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(800, 450);
-            this.reportViewer1.TabIndex = 0;
+            this.bindingSource1.DataMember = "DataTable1";
+            this.bindingSource1.DataSource = this.Report;
             // 
             // ReportForm
             // 
@@ -73,8 +68,8 @@ namespace KB_AIS
             this.Text = "ReportForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReportForm_FormClosed);
             this.Load += new System.EventHandler(this.ReportForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Report)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -82,7 +77,7 @@ namespace KB_AIS
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource DataTable1BindingSource;
         private Report Report;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

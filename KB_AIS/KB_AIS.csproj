@@ -88,6 +88,11 @@
     <Compile Include="DutyForm.Designer.cs">
       <DependentUpon>DutyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FullData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FullData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="HistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +179,7 @@
     <EmbeddedResource Include="DutyForm.resx">
       <DependentUpon>DutyForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FullDataReport.rdlc" />
     <EmbeddedResource Include="HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +221,17 @@
     <EmbeddedResource Include="WorkCertificationForm.resx">
       <DependentUpon>WorkCertificationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="FullData.xsc">
+      <DependentUpon>FullData.xsd</DependentUpon>
+    </None>
+    <None Include="FullData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FullData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="FullData.xss">
+      <DependentUpon>FullData.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

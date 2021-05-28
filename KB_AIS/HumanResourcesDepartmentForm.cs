@@ -11,7 +11,7 @@ namespace KB_AIS
         //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
-        string id,fio;
+        string id,fio,idOldCertificate;
         string pass;
         public string IdPeople;
 
@@ -147,10 +147,11 @@ namespace KB_AIS
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) //событие по нажатию на ячейку в DataGridView
         {
-            foreach (DataGridViewRow  row in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 id = row.Cells[0].Value.ToString();
-
+                fio = row.Cells[1].Value.ToString();
+                idOldCertificate = row.Cells["Номер_удостоверения"].Value.ToString();
             }
         }
 
@@ -177,15 +178,6 @@ namespace KB_AIS
             else
             {
                 MessageBox.Show("Необходимо заполнить все поля", "Внимание!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                id = row.Cells[0].Value.ToString();
-                fio= row.Cells[1].Value.ToString();
             }
         }
 
@@ -308,7 +300,6 @@ namespace KB_AIS
 
         private void HumanResourcesDepartmentForm_Shown(object sender, EventArgs e)
         {
-
            string query = @"Select Сотрудники.Табельный_номер,Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО],Сотрудники.Серия_паспорта,
                 Сотрудники.Номер_паспорта,Сотрудники.Номер_телефона,Должности.Название_должности,Удостоверение.Номер_удостоверения,
                 Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
@@ -370,6 +361,97 @@ namespace KB_AIS
             workCertificationForm.HRDForm = this;
             workCertificationForm.Visible = true;
             this.Visible = false;
+        }
+
+        private void поБазеСотрудниковToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReportForm reportForm = new ReportForm();
+            reportForm.markreport = "7";
+            reportForm.humanRDForm = this;
+            reportForm.Visible = true;
+            this.Visible = false;
+        }
+
+        private void восстановитьУдостоверениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (id != null)
+            {
+
+
+                string query = @"Select Удостоверение.Номер_удостоверения,Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
+                inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
+                inner join Должности on Должности.ID=История_изменений_должностей.ID_Должности
+                inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
+                inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
+                where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
+                where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Истекло=0 and Удостоверение.Номер_удостоверения='" + idOldCertificate + "'";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                DataTable dataTableOldCertificat = new DataTable();
+                sqlDataAdapter.Fill(dataTableOldCertificat);
+
+
+                query = @"Select Max(ID) as ID from История_изменений_должностей
+                    where  Табельный_номер_сотрудника='" + id + "'";
+                sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                DataTable dataTableHistory = new DataTable();
+                sqlDataAdapter.Fill(dataTableHistory);
+
+                int idHistory = int.Parse(dataTableHistory.Rows[0][0].ToString());
+
+
+                query = @"Insert into Удостоверение values('" + DateTime.Now.ToString("yyyy.MM.dd") + "','" + idHistory + "','0');";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                query = @"Select MAX(Номер_удостоверения)from Удостоверение";
+                sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                DataTable dataTableCertification = new DataTable();
+                sqlDataAdapter.Fill(dataTableCertification);
+
+                int idCertification = int.Parse(dataTableCertification.Rows[0][0].ToString());
+
+
+                query = @"insert into История_продления_удостоверений values ('" + ((DateTime)dataTableOldCertificat.Rows[0]["Действителен_по"]).ToString("yyyy.MM.dd") + "','" + idCertification + "')";
+
+                sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+
+                query = @"Update Удостоверение set Истекло=1
+                where Номер_удостоверения= '" + idOldCertificate + "'";
+
+                sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                query = @"Update Рабочее_время set Номер_удостоверения = 1
+                 where Номер_удостоверения='" + idOldCertificate + "'";
+
+                sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                RefreshTable();
+
+                MessageBox.Show("Удостоверение перевыпущено!!!");
+
+                PrintOutSertificateForm printOutSertificateForm = new PrintOutSertificateForm();
+                printOutSertificateForm.id = idCertification.ToString();
+                printOutSertificateForm.humanRDForm = this;
+                printOutSertificateForm.Visible = true;
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Выбирите сотрудника");
+            }
         }
 
         private void заОпределенныйПериодToolStripMenuItem1_Click(object sender, EventArgs e)

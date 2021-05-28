@@ -36,7 +36,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Report</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\saha3\source\repos\KB_AIS\KB_AIS\Report.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\saha3\OneDrive\Рабочий стол\KB_AIS\KB_AIS\Report.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -373,7 +373,6 @@
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
             <Top>0.82606cm</Top>
-            <Left>0cm</Left>
             <Height>1.04662cm</Height>
             <Width>21cm</Width>
             <ZIndex>1</ZIndex>
@@ -541,7 +540,6 @@
             </Paragraphs>
             <rd:DefaultName>NameReport</rd:DefaultName>
             <Top>2.43099cm</Top>
-            <Left>0cm</Left>
             <Height>0.6cm</Height>
             <Width>21cm</Width>
             <ZIndex>6</ZIndex>
