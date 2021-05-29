@@ -29,7 +29,6 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanResourcesDepartmentForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,6 +44,7 @@ namespace KB_AIS
             this.заТекущийМесяцToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заТекущийГодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.заОпределенныйПериодToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.поБазеСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.просмотрЛичногоУдостоверенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,8 +84,6 @@ namespace KB_AIS
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.updateButton = new System.Windows.Forms.Button();
             this.searchDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.поБазеСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -198,6 +196,13 @@ namespace KB_AIS
             this.заОпределенныйПериодToolStripMenuItem1.Size = new System.Drawing.Size(250, 24);
             this.заОпределенныйПериодToolStripMenuItem1.Text = "За определенный период";
             this.заОпределенныйПериодToolStripMenuItem1.Click += new System.EventHandler(this.заОпределенныйПериодToolStripMenuItem1_Click);
+            // 
+            // поБазеСотрудниковToolStripMenuItem
+            // 
+            this.поБазеСотрудниковToolStripMenuItem.Name = "поБазеСотрудниковToolStripMenuItem";
+            this.поБазеСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
+            this.поБазеСотрудниковToolStripMenuItem.Text = "По базе сотрудников";
+            this.поБазеСотрудниковToolStripMenuItem.Click += new System.EventHandler(this.поБазеСотрудниковToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -632,18 +637,6 @@ namespace KB_AIS
             this.searchDateTimePicker.TabIndex = 21;
             this.searchDateTimePicker.ValueChanged += new System.EventHandler(this.searchDateTimePicker_ValueChanged);
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 300;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // поБазеСотрудниковToolStripMenuItem
-            // 
-            this.поБазеСотрудниковToolStripMenuItem.Name = "поБазеСотрудниковToolStripMenuItem";
-            this.поБазеСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
-            this.поБазеСотрудниковToolStripMenuItem.Text = "По базе сотрудников";
-            this.поБазеСотрудниковToolStripMenuItem.Click += new System.EventHandler(this.поБазеСотрудниковToolStripMenuItem_Click);
-            // 
             // HumanResourcesDepartmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -723,7 +716,6 @@ namespace KB_AIS
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.DateTimePicker searchDateTimePicker;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox FiotextBox;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;

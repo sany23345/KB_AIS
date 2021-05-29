@@ -8,11 +8,13 @@ namespace KB_AIS
 {
     public partial class PasswodChangeForm : Form
     {
-        static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
+        static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
         public  Form backForm;
         public string id;
         public string pass;
+
         public PasswodChangeForm()
         {
             InitializeComponent();
@@ -25,7 +27,6 @@ namespace KB_AIS
             string password = Convert.ToBase64String(hashPassword);
             if (!string.IsNullOrEmpty(newPasswordTextBox.Text))
             {
-
                 if (pass == password)
                 {
                     if (newPasswordTextBox.Text == confirmationTextBox.Text)
@@ -34,7 +35,7 @@ namespace KB_AIS
                         hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(confirmationTextBox.Text));
                         password = Convert.ToBase64String(hashPassword);
 
-                        string query = @"  Update Сотрудники set Пароль = '" + password + "' where ID = '" + id + "'";
+                        string query = @"Update Сотрудники set Пароль = '" + password + "' where Табельный_номер = '" + id + "'";
                         sqlConnection.Open();
                         SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                         sqlCommand.ExecuteNonQuery();

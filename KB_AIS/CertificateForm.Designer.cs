@@ -29,7 +29,6 @@ namespace KB_AIS
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CertificateForm));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +41,6 @@ namespace KB_AIS
             this.expirationDateTextBox = new System.Windows.Forms.TextBox();
             this.positionTextBox = new System.Windows.Forms.TextBox();
             this.numberTextBox = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.enterButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -154,11 +152,6 @@ namespace KB_AIS
             this.numberTextBox.Size = new System.Drawing.Size(385, 26);
             this.numberTextBox.TabIndex = 19;
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 300;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -211,6 +204,7 @@ namespace KB_AIS
             this.Text = "CertificateForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CertificateForm_FormClosed);
             this.Load += new System.EventHandler(this.CertificateForm_Load);
+            this.Shown += new System.EventHandler(this.CertificateForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -230,7 +224,6 @@ namespace KB_AIS
         private System.Windows.Forms.TextBox expirationDateTextBox;
         private System.Windows.Forms.TextBox positionTextBox;
         private System.Windows.Forms.TextBox numberTextBox;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button enterButton;
     }

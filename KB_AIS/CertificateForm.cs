@@ -17,25 +17,6 @@ namespace KB_AIS
         public Form avtorisationForm;
         public string id;
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //PasswordChange();
-        }
-
-        public void PasswordChange()
-        {
-            //timer1.Stop();
-
-            //MessageBox.Show("Вам необходимо изменить пароль!!!");
-            //PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
-            //passwodChangeForm.backForm = this;
-            //passwodChangeForm.id = id;
-            //passwodChangeForm.pass = pass;
-            //passwodChangeForm.Visible = true;
-            //this.Enabled = false;
-        }
-
-
         private void CertificateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             avtorisationForm.Visible = true;
@@ -62,19 +43,7 @@ namespace KB_AIS
             fioTextBox.Text = dataTable.Rows[0]["ФИО"].ToString();
             positionTextBox.Text = dataTable.Rows[0]["Название_должности"].ToString();
             dataOfIssueTextBox.Text = DateTime.Parse(dataTable.Rows[0]["Дата_выдачи"].ToString()).ToString("dd.MM.yyyy");
-            expirationDateTextBox.Text = DateTime.Parse(dataTable.Rows[0]["Действителен_по"].ToString()).ToString("dd.MM.yyyy");
-
-            //string query = @"Select Пароль from Сотрудники  
-            //                    where ID='" + id + "' ";
-            //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            //DataTable dataTable = new DataTable();
-            //sqlDataAdapter.Fill(dataTable);
-            //pass = dataTable.Rows[0]["Пароль"].ToString();
-
-            //if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
-            //{
-            //    timer1.Start();
-            //}
+            expirationDateTextBox.Text = DateTime.Parse(dataTable.Rows[0]["Действителен_по"].ToString()).ToString("dd.MM.yyyy");     
         }
            
         public CertificateForm()
@@ -90,6 +59,27 @@ namespace KB_AIS
             reportForm.dutyForm = this;
             reportForm.Visible = true;
             this.Visible = false;
+        }
+
+        private void CertificateForm_Shown(object sender, EventArgs e)
+        {
+            string query = @"Select Пароль from Сотрудники
+                   where Табельный_номер = '" + id + "' ";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            pass = dataTable.Rows[0]["Пароль"].ToString();
+
+            if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
+            {
+                MessageBox.Show("Вам необходимо изменить пароль!!!");
+                PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
+                passwodChangeForm.backForm = this;
+                passwodChangeForm.id = id;
+                passwodChangeForm.pass = pass;
+                passwodChangeForm.Visible = true;
+                this.Enabled = false;
+            }
         }
     }
 }

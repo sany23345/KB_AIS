@@ -6,30 +6,30 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>2.02753cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>4.36655cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>2.31857cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>2.53024cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>2.79482cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>3.80024cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.87798cm</Width>
+              <Width>1.89524cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.02333cm</Height>
+              <Height>0.97042cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -183,36 +183,6 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Название должности</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
                     <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -220,7 +190,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Номер удостоверения</Value>
+                              <Value>Название должности</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -241,10 +211,40 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox13">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Номер удостоверения</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.94938cm</Height>
+              <Height>1.52604cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -482,16 +482,49 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>1.21391cm</Top>
-        <Left>0.28787cm</Left>
-        <Height>2.97271cm</Height>
-        <Width>20.14583cm</Width>
+        <Top>2.45745cm</Top>
+        <Left>0.63182cm</Left>
+        <Height>2.49646cm</Height>
+        <Width>19.73318cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox2">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Отчет по сотрудникам на предприятии</Value>
+                <Style>
+                  <FontSize>24pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox2</rd:DefaultName>
+        <Top>0.3937cm</Top>
+        <Height>1.31438cm</Height>
+        <Width>21cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>297mm</Height>
     <Style />
@@ -505,18 +538,18 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="FullData">
+    <DataSource Name="FullDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>d5680caf-65a1-4363-bb1f-49cd9af66b3c</rd:DataSourceID>
+      <rd:DataSourceID>211fa44d-5690-479d-9114-33d387ece385</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>FullData</DataSourceName>
+        <DataSourceName>FullDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -550,8 +583,8 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>FullData</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\saha3\OneDrive\Рабочий стол\KB_AIS\KB_AIS\FullData.xsd</rd:SchemaPath>
+        <rd:DataSetName>FullDataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\saha3\OneDrive\Рабочий стол\KB_AIS\KB_AIS\FullDataSet.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -560,5 +593,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>b379b508-4c70-4493-b288-90d016edc8be</rd:ReportID>
+  <rd:ReportID>216406cb-a400-44d8-ba12-8bdc8d87847d</rd:ReportID>
 </Report>

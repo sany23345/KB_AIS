@@ -12,7 +12,7 @@ namespace KB_AIS
         //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
-        DataTable dataTable = new DataTable();
+        DataTable dataTableWorks = new DataTable();
 
         public Form avtorisationForm;
         string id;
@@ -35,30 +35,14 @@ namespace KB_AIS
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
                 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Истекло=0";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            sqlDataAdapter.Fill(dataTable);
+            sqlDataAdapter.Fill(dataTableWorks);
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            for (int i = 0; i < dataTableWorks.Rows.Count; i++)
             {
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
-                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["ФИО"].ToString();
+                dataGridView1.Rows[i].Cells[0].Value = dataTableWorks.Rows[i]["Номер_удостоверения"].ToString();
+                dataGridView1.Rows[i].Cells[1].Value = dataTableWorks.Rows[i]["ФИО"].ToString();
             }
-
-
-            //query = @"Select Пароль from Сотрудники  
-            //                    where ID='" + IdPeople + "' ";
-            //sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            //dataTable = new DataTable();
-            //sqlDataAdapter.Fill(dataTable);
-            //pass = dataTable.Rows[0]["Пароль"].ToString();
-
-
-            //if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
-            //{
-            //    timer1.Start();
-            //}
-
-
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
@@ -70,7 +54,7 @@ namespace KB_AIS
         private void searchByNameTextBox_TextChanged(object sender, EventArgs e) //событие поиска по фамилии сотрудника
         {
             dataGridView1.Rows.Clear();
-            dataTable.Clear();
+            dataTableWorks.Clear();
             string query = @"Select Фото, Удостоверение.Номер_удостоверения, Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО]
                 from История_изменений_должностей
                 inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
@@ -78,23 +62,23 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
-                where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Фамилия like '" + searchByNameTextBox.Text+"%'";
+                where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Истекло=0 and Удалено=0 and Фамилия like '" + searchByNameTextBox.Text + "%'";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            sqlDataAdapter.Fill(dataTable);
+            sqlDataAdapter.Fill(dataTableWorks);
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            for (int i = 0; i < dataTableWorks.Rows.Count; i++)
             {
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
-                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["ФИО"].ToString();
+                dataGridView1.Rows[i].Cells[0].Value = dataTableWorks.Rows[i]["Номер_удостоверения"].ToString();
+                dataGridView1.Rows[i].Cells[1].Value = dataTableWorks.Rows[i]["ФИО"].ToString();
             }
         }
 
         private void searchByIdTextBox_TextChanged(object sender, EventArgs e) //событие поиска по номеру удостоверения
         {
             dataGridView1.Rows.Clear();
-            dataTable.Clear();
+            dataTableWorks.Clear();
             string query = @"Select Фото, Удостоверение.Номер_удостоверения, Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО]
                 from История_изменений_должностей
                 inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
@@ -102,17 +86,16 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
-                where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Удостоверение.Номер_удостоверения like '" + searchByIdTextBox.Text + "%'";
+                where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Истекло=0 and Удалено=0 and Удостоверение.Номер_удостоверения like '" + searchByIdTextBox.Text + "%'";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            
-            sqlDataAdapter.Fill(dataTable);
+            sqlDataAdapter.Fill(dataTableWorks);
 
-            for (int i = 0; i < dataTable.Rows.Count; i++)
+            for (int i = 0; i < dataTableWorks.Rows.Count; i++)
             {
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = dataTable.Rows[i]["Номер_удостоверения"].ToString();
-                dataGridView1.Rows[i].Cells[1].Value = dataTable.Rows[i]["ФИО"].ToString();
+                dataGridView1.Rows[i].Cells[0].Value = dataTableWorks.Rows[i]["Номер_удостоверения"].ToString();
+                dataGridView1.Rows[i].Cells[1].Value = dataTableWorks.Rows[i]["ФИО"].ToString();
             }
         }
 
@@ -174,9 +157,10 @@ namespace KB_AIS
         {
             foreach (DataGridViewRow item in dataGridView1.SelectedRows) //выбираем в строке только id по которому будем редактировать
             {
-                id = item.Cells[0].Value.ToString();
-                pictureBox2.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTable.Rows[e.RowIndex]["Фото"].ToString())));
+                id = item.Cells[0].Value.ToString();              
             }
+
+            pictureBox2.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(dataTableWorks.Rows[e.RowIndex][0].ToString())));
         }
 
         private void DutyForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -205,19 +189,6 @@ namespace KB_AIS
             {
                 e.Handled = true;
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            timer1.Stop();
-
-            MessageBox.Show("Вам необходимо изменить пароль!!!");
-            PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
-            passwodChangeForm.backForm = this;
-            passwodChangeForm.id = IdPeople;
-            passwodChangeForm.pass = pass;
-            passwodChangeForm.Visible = true;
-            this.Enabled = false;
         }
 
         private void рабочееВремяЗаТекущийМесяцToolStripMenuItem_Click(object sender, EventArgs e)
@@ -254,6 +225,27 @@ namespace KB_AIS
             certificateForm.avtorisationForm = this;
             certificateForm.Visible = true;
             this.Visible = false;
+        }
+
+        private void DutyForm_Shown(object sender, EventArgs e)
+        {
+            string query = @"Select Пароль from Сотрудники  
+                where Табельный_номер='" + IdPeople + "' ";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            pass = dataTable.Rows[0]["Пароль"].ToString();
+
+            if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
+            {
+                MessageBox.Show("Вам необходимо изменить пароль!!!");
+                PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
+                passwodChangeForm.backForm = this;
+                passwodChangeForm.id = IdPeople;
+                passwodChangeForm.pass = pass;
+                passwodChangeForm.Visible = true;
+                this.Enabled = false;
+            }
         }
     }
 }

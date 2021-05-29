@@ -82,16 +82,21 @@
     <Compile Include="CertificateForm.Designer.cs">
       <DependentUpon>CertificateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataReportCertificate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataReportCertificate.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DutyForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DutyForm.Designer.cs">
       <DependentUpon>DutyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FullData.Designer.cs">
+    <Compile Include="FullDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FullData.xsd</DependentUpon>
+      <DependentUpon>FullDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="HistoryForm.cs">
       <SubType>Form</SubType>
@@ -137,10 +142,22 @@
     <Compile Include="RedactForm.Designer.cs">
       <DependentUpon>RedactForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporCertificateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporCertificateForm.Designer.cs">
+      <DependentUpon>ReporCertificateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Report.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportDataForm.Designer.cs">
+      <DependentUpon>ReportDataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReportDuty.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -152,12 +169,6 @@
     </Compile>
     <Compile Include="ReportDutyForm.Designer.cs">
       <DependentUpon>ReportDutyForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportForm.Designer.cs">
-      <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="WorkCertificationForm.cs">
@@ -179,7 +190,7 @@
     <EmbeddedResource Include="DutyForm.resx">
       <DependentUpon>DutyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FullDataReport.rdlc" />
+    <EmbeddedResource Include="FullData.rdlc" />
     <EmbeddedResource Include="HistoryForm.resx">
       <DependentUpon>HistoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,27 +221,41 @@
     <EmbeddedResource Include="RedactForm.resx">
       <DependentUpon>RedactForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporCertificateForm.resx">
+      <DependentUpon>ReporCertificateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportCertificate.rdlc" />
+    <EmbeddedResource Include="ReportDataForm.resx">
+      <DependentUpon>ReportDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportDuty.rdlc" />
     <EmbeddedResource Include="ReportDutyForm.resx">
       <DependentUpon>ReportDutyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportForm.resx">
-      <DependentUpon>ReportForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportSOC.rdlc" />
     <EmbeddedResource Include="WorkCertificationForm.resx">
       <DependentUpon>WorkCertificationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="FullData.xsc">
-      <DependentUpon>FullData.xsd</DependentUpon>
+    <None Include="DataReportCertificate.xsc">
+      <DependentUpon>DataReportCertificate.xsd</DependentUpon>
     </None>
-    <None Include="FullData.xsd">
+    <None Include="DataReportCertificate.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>FullData.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataReportCertificate.Designer.cs</LastGenOutput>
     </None>
-    <None Include="FullData.xss">
-      <DependentUpon>FullData.xsd</DependentUpon>
+    <None Include="DataReportCertificate.xss">
+      <DependentUpon>DataReportCertificate.xsd</DependentUpon>
+    </None>
+    <None Include="FullDataSet.xsc">
+      <DependentUpon>FullDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FullDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FullDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="FullDataSet.xss">
+      <DependentUpon>FullDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

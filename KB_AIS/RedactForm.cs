@@ -141,12 +141,12 @@ namespace KB_AIS
         {
             DialogResult dialogResult = MessageBox.Show("Вы точно уверены что хотите сохранить изменения???", "Предупреждение!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            image = Convert.ToBase64String(File.ReadAllBytes(filePath));
+            image = Convert.ToBase64String(File.ReadAllBytes(image));
 
             if (dialogResult == DialogResult.Yes)
             {
                 string query = @"Update Сотрудники set 
-                    Фамилия='"+surnameTextBox.Text+"',Имя= '"+nameTextBox.Text+"', Отчество = '"+patronymicTextBox.Text+"',Серия_паспорта = '"+seriesPassportTextBox.Text+"',Номер_паспорта = '"+idPassportTextBox.Text+"',Номер_телефона = '"+telephoneTextBox.Text+"',Фото = '"+image+"'where Табельный_номер='" + searchByNameComboBox.SelectedValue.ToString() + "'";
+                    Фамилия='" + surnameTextBox.Text + "',Имя= '" + nameTextBox.Text + "', Отчество = '" + patronymicTextBox.Text + "',Серия_паспорта = '" + seriesPassportTextBox.Text + "',Номер_паспорта = '" + idPassportTextBox.Text + "',Номер_телефона = '" + telephoneTextBox.Text + "',Фото = '" + image + "'where Табельный_номер='" + searchByNameComboBox.SelectedValue.ToString() + "'";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();

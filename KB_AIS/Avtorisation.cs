@@ -20,16 +20,16 @@ namespace KB_AIS
 
         private void enterButton_Click(object sender, EventArgs e) //событие по нажатию кнопки "Вход"
         {
-            //var md5 = MD5.Create(); //создание хеш алгоритма 
-            //var hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(passwordTextBox.Text)); // вычисление хеш алгоритма для заданного массива
-            //string password = Convert.ToBase64String(hashPassword); //преобразование хеш массива в строковое представление
+            var md5 = MD5.Create(); //создание хеш алгоритма 
+            var hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes(passwordTextBox.Text)); // вычисление хеш алгоритма для заданного массива
+            string password = Convert.ToBase64String(hashPassword); //преобразование хеш массива в строковое представление
 
             string query = @"Select История_изменений_должностей.ID, Сотрудники.Фамилия,Сотрудники.Табельный_номер,Сотрудники.Пароль,
                     Дата_вступления_в_должность,Должности.Название_должности, Удостоверение.Номер_удостоверения  From История_изменений_должностей
                     inner join  Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
                     inner join  Должности on Должности.ID=История_изменений_должностей.ID_Должности
                     inner join  Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
-                    where Табельный_номер='" + loginTexBox.Text+"' and Пароль='"+passwordTextBox.Text+"' and Истекло=0";
+                    where Табельный_номер='" + loginTexBox.Text+"' and Пароль='"+ password + "' and Истекло=0";
 
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);

@@ -11,19 +11,18 @@ namespace KB_AIS
         //static string connection = @"Data Source=DESKTOP-MR4F90M\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         static string connection = @"Data Source=DESKTOP-DJUDJM1\SQLEXPRESS;Initial Catalog=PP;Integrated Security=True";
         SqlConnection sqlConnection = new SqlConnection(connection);
-        string id,fio,idOldCertificate;
+        string id, fio, idOldCertificate;
         string pass;
         public string IdPeople;
-
         public Form avtorisaitionForm;
+
         public HumanResourcesDepartmentForm()
         {
             InitializeComponent();
         }
+
         public void PasswordChange()
         {
-            timer1.Stop();
-
             MessageBox.Show("Вам необходимо изменить пароль!!!");
             PasswodChangeForm passwodChangeForm = new PasswodChangeForm();
             passwodChangeForm.backForm = this;
@@ -31,7 +30,6 @@ namespace KB_AIS
             passwodChangeForm.pass = pass;
             passwodChangeForm.Visible = true;
             this.Enabled = false;
-
         }
 
         public void RefreshTable() //метод для обновления таблицы
@@ -47,7 +45,7 @@ namespace KB_AIS
 						 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and Удалено=0 and Истекло=0";
 
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
-            DataTable dataTable = new DataTable();      
+            DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
         }
@@ -108,7 +106,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = ( SELECT max(Действителен_по)
-                      FROM История_продления_удостоверений) and Удалено=0 and Фамилия like '"+ searchNameTextBox.Text + "%' and Истекло=0;";
+                      FROM История_продления_удостоверений) and Удалено=0 and Фамилия like '" + searchNameTextBox.Text + "%' and Истекло=0;";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -125,7 +123,7 @@ namespace KB_AIS
                 inner join Удостоверение on Удостоверение.ID_изменения_должностей=История_изменений_должностей.ID
                 inner join История_продления_удостоверений on История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения
                 where Действителен_по = ( SELECT max(Действителен_по)
-                      FROM История_продления_удостоверений) and Удалено=0 and Дата_выдачи ='"+searchDateTimePicker.Value+ "' and Истекло=0;";
+                      FROM История_продления_удостоверений) and Удалено=0 and Дата_выдачи ='" + searchDateTimePicker.Value + "' and Истекло=0;";
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
             DataTable dataTable = new DataTable();
             sqlDataAdapter.Fill(dataTable);
@@ -142,6 +140,7 @@ namespace KB_AIS
             if (e.TabPageIndex == 1)
             {
                 LoadEducationalTable();
+                FiotextBox.Text = fio;
             }
         }
 
@@ -150,7 +149,7 @@ namespace KB_AIS
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 id = row.Cells[0].Value.ToString();
-                fio = row.Cells[1].Value.ToString();
+                fio = row.Cells["ФИО"].Value.ToString();
                 idOldCertificate = row.Cells["Номер_удостоверения"].Value.ToString();
             }
         }
@@ -221,7 +220,7 @@ namespace KB_AIS
             this.Visible = false;//свойство формы для ограничения действия пользователя
             HistoryForm historyForm = new HistoryForm(); //создание формы добавления
             historyForm.humanRDForm = this; //связь между формами
-            historyForm.Visible=true; //открытие формы AddForm  
+            historyForm.Visible = true; //открытие формы AddForm  
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -240,14 +239,9 @@ namespace KB_AIS
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            PasswordChange();
-        }
-
         private void заТекущийМесяцToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportForm reportForm = new ReportForm();
+            ReporCertificateForm reportForm = new ReporCertificateForm();
             reportForm.markreport = "1";
             reportForm.humanRDForm = this;
             reportForm.Visible = true;
@@ -256,7 +250,7 @@ namespace KB_AIS
 
         private void заТекущийГодToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportForm reportForm = new ReportForm();
+            ReporCertificateForm reportForm = new ReporCertificateForm();
             reportForm.markreport = "2";
             reportForm.humanRDForm = this;
             reportForm.Visible = true;
@@ -274,7 +268,7 @@ namespace KB_AIS
 
         private void заТекущийМесяцToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ReportForm reportForm = new ReportForm();
+            ReporCertificateForm reportForm = new ReporCertificateForm();
             reportForm.markreport = "4";
             reportForm.humanRDForm = this;
             reportForm.Visible = true;
@@ -283,7 +277,7 @@ namespace KB_AIS
 
         private void заТекущийГодToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ReportForm reportForm = new ReportForm();
+            ReporCertificateForm reportForm = new ReporCertificateForm();
             reportForm.markreport = "5";
             reportForm.humanRDForm = this;
             reportForm.Visible = true;
@@ -292,15 +286,27 @@ namespace KB_AIS
 
         private void prolongationButton_Click(object sender, EventArgs e)
         {
-             Prolongation prolongation = new Prolongation();
-                    prolongation.HRDForm = this;
-                    prolongation.Visible = true;
-                    this.Visible = false;
+            Prolongation prolongation = new Prolongation();
+            prolongation.HRDForm = this;
+            prolongation.Visible = true;
+            this.Visible = false;
         }
 
         private void HumanResourcesDepartmentForm_Shown(object sender, EventArgs e)
         {
-           string query = @"Select Сотрудники.Табельный_номер,Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО],Сотрудники.Серия_паспорта,
+            string query = @"Select Пароль from Сотрудники
+                    where Табельный_номер = '" + IdPeople + "'";
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            pass = dataTable.Rows[0]["Пароль"].ToString();
+
+            if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
+            {
+                PasswordChange();
+            }
+
+            query = @"Select Сотрудники.Табельный_номер,Сотрудники.Фамилия +' '+Сотрудники.Имя+' '+Сотрудники.Отчество as [ФИО],Сотрудники.Серия_паспорта,
                 Сотрудники.Номер_паспорта,Сотрудники.Номер_телефона,Должности.Название_должности,Удостоверение.Номер_удостоверения,
                 Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
                 inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
@@ -310,7 +316,7 @@ namespace KB_AIS
                 where Действителен_по = (SELECT max(Действителен_по) FROM История_продления_удостоверений 
                 where История_продления_удостоверений.Номер_удостоверения=Удостоверение.Номер_удостоверения) and 
                 Удалено=0 and DATENAME(MONTH,Действителен_по)+'-'+DATENAME(YEAR,Действителен_по)=DATENAME(MONTH,GETDATE())+'-'+DATENAME(YEAR,GETDATE()) and Истекло=0 ";
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
             DataTable dataTableProlonfation = new DataTable();
             sqlDataAdapter.Fill(dataTableProlonfation);
 
@@ -325,25 +331,6 @@ namespace KB_AIS
                     this.Visible = false;
                 }
             }
-
-            /////Переделать
-
-            //query = @"Select Пароль from Сотрудники  
-            //                    where ID='" + IdPeople + "' ";
-            //sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-            //dataTable = new DataTable();
-            //sqlDataAdapter.Fill(dataTable);
-            //pass = dataTable.Rows[0]["Пароль"].ToString();
-
-
-
-            //if (pass == "4QrcOUm6Wau+VuBX8g+IPg==")
-            //{
-            //    timer1.Start();
-            //} 
-
-
-
         }
 
         private void toolStripButton6_Click(object sender, EventArgs e)
@@ -365,8 +352,7 @@ namespace KB_AIS
 
         private void поБазеСотрудниковToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReportForm reportForm = new ReportForm();
-            reportForm.markreport = "7";
+            ReportDataForm reportForm = new ReportDataForm();
             reportForm.humanRDForm = this;
             reportForm.Visible = true;
             this.Visible = false;
@@ -376,8 +362,6 @@ namespace KB_AIS
         {
             if (id != null)
             {
-
-
                 string query = @"Select Удостоверение.Номер_удостоверения,Удостоверение.Дата_выдачи,История_продления_удостоверений.Действителен_по from История_изменений_должностей
                 inner join Сотрудники on Сотрудники.Табельный_номер=История_изменений_должностей.Табельный_номер_сотрудника
                 inner join Должности on Должности.ID=История_изменений_должностей.ID_Должности
@@ -389,7 +373,6 @@ namespace KB_AIS
                 DataTable dataTableOldCertificat = new DataTable();
                 sqlDataAdapter.Fill(dataTableOldCertificat);
 
-
                 query = @"Select Max(ID) as ID from История_изменений_должностей
                     where  Табельный_номер_сотрудника='" + id + "'";
                 sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
@@ -397,7 +380,6 @@ namespace KB_AIS
                 sqlDataAdapter.Fill(dataTableHistory);
 
                 int idHistory = int.Parse(dataTableHistory.Rows[0][0].ToString());
-
 
                 query = @"Insert into Удостоверение values('" + DateTime.Now.ToString("yyyy.MM.dd") + "','" + idHistory + "','0');";
 
@@ -413,14 +395,12 @@ namespace KB_AIS
 
                 int idCertification = int.Parse(dataTableCertification.Rows[0][0].ToString());
 
-
                 query = @"insert into История_продления_удостоверений values ('" + ((DateTime)dataTableOldCertificat.Rows[0]["Действителен_по"]).ToString("yyyy.MM.dd") + "','" + idCertification + "')";
 
                 sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
-
 
                 query = @"Update Удостоверение set Истекло=1
                 where Номер_удостоверения= '" + idOldCertificate + "'";
@@ -430,8 +410,7 @@ namespace KB_AIS
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
 
-                query = @"Update Рабочее_время set Номер_удостоверения = 1
-                 where Номер_удостоверения='" + idOldCertificate + "'";
+                query = @"Update Рабочее_время set Номер_удостоверения = '" + idCertification + "' where Номер_удостоверения='" + idOldCertificate + "'";
 
                 sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();

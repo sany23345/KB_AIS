@@ -2,18 +2,18 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="Report">
+    <DataSource Name="DataReportCertificate">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>ad24a07c-2f6f-475f-974f-5cb88f4296f6</rd:DataSourceID>
+      <rd:DataSourceID>b9d0fc43-3437-48d3-8083-7da4db6503fd</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>Report</DataSourceName>
+        <DataSourceName>DataReportCertificate</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
@@ -35,8 +35,8 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>Report</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\saha3\OneDrive\Рабочий стол\KB_AIS\KB_AIS\Report.xsd</rd:SchemaPath>
+        <rd:DataSetName>DataReportCertificate</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\saha3\OneDrive\Рабочий стол\KB_AIS\KB_AIS\DataReportCertificate.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />
@@ -52,16 +52,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.77593cm</Width>
+                  <Width>2.376cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>7.3919cm</Width>
+                  <Width>7.2225cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.70266cm</Width>
+                  <Width>4.7225cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.71084cm</Width>
+                  <Width>4.7225cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -77,7 +77,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Номер удостоверения</Value>
+                                  <Value>ID</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -160,7 +160,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox7">
+                        <Textbox Name="Textbox9">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -174,7 +174,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -340,15 +340,14 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>4.25938cm</Top>
-            <Left>0.90632cm</Left>
+            <Top>3.93912cm</Top>
+            <Left>0.57891cm</Left>
             <Height>1.2cm</Height>
-            <Width>19.58133cm</Width>
+            <Width>19.0435cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <TextAlign>Center</TextAlign>
             </Style>
           </Tablix>
           <Textbox Name="Textbox8">
@@ -372,8 +371,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox7</rd:DefaultName>
-            <Top>0.82606cm</Top>
-            <Height>1.04662cm</Height>
+            <Top>0.33023cm</Top>
+            <Height>1.126cm</Height>
             <Width>21cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -386,27 +385,26 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox17">
+          <Textbox Name="NameReport">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Всего удостоврений:</Value>
-                    <Style>
-                      <FontFamily>Times New Roman</FontFamily>
-                    </Style>
+                    <Value>=Parameters!NameReport.Value</Value>
+                    <Style />
                   </TextRun>
                 </TextRuns>
-                <Style />
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>Textbox17</rd:DefaultName>
-            <Top>5.78817cm</Top>
-            <Left>0.90632cm</Left>
+            <rd:DefaultName>NameReport</rd:DefaultName>
+            <Top>1.74307cm</Top>
             <Height>0.6cm</Height>
-            <Width>3.77593cm</Width>
+            <Width>21cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -418,41 +416,7 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox18">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Count(Fields!ID.Value, "DataSet1")</Value>
-                    <Style>
-                      <FontFamily>Times New Roman</FontFamily>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>5.78817cm</Top>
-            <Left>4.82335cm</Left>
-            <Height>0.6cm</Height>
-            <Width>1.1554cm</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox9">
+          <Textbox Name="Textbox10">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -471,11 +435,75 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox9</rd:DefaultName>
-            <Top>3.24879cm</Top>
-            <Left>7.11002cm</Left>
+            <Top>2.77604cm</Top>
+            <Left>7.0275cm</Left>
             <Height>0.6cm</Height>
             <Width>2.23542cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="StartDate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!StartDate.Value</Value>
+                    <Style>
+                      <Format>D</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>StartDate</rd:DefaultName>
+            <Top>2.77604cm</Top>
+            <Left>9.26292cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
             <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="EndDate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!EndDate.Value</Value>
+                    <Style>
+                      <Format>D</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>EndDate</rd:DefaultName>
+            <Top>2.77604cm</Top>
+            <Left>12.39991cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -505,43 +533,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>3.24879cm</Top>
-            <Left>11.80134cm</Left>
+            <Top>2.77604cm</Top>
+            <Left>11.76292cm</Left>
             <Height>0.6cm</Height>
             <Width>0.63699cm</Width>
-            <ZIndex>5</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="NameReport">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=Parameters!NameReport.Value</Value>
-                    <Style>
-                      <FontFamily>Times New Roman</FontFamily>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>NameReport</rd:DefaultName>
-            <Top>2.43099cm</Top>
-            <Height>0.6cm</Height>
-            <Width>21cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -553,27 +548,27 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="StartDate">
+          <Textbox Name="Textbox17">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!StartDate.Value</Value>
-                    <Style />
+                    <Value>Всего удостоврений:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                    </Style>
                   </TextRun>
                 </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
+                <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>StartDate</rd:DefaultName>
-            <Top>3.24879cm</Top>
-            <Left>9.34544cm</Left>
+            <rd:DefaultName>Textbox17</rd:DefaultName>
+            <Top>5.52771cm</Top>
+            <Left>0.57891cm</Left>
             <Height>0.6cm</Height>
-            <Width>2.4559cm</Width>
+            <Width>3.77593cm</Width>
             <ZIndex>7</ZIndex>
             <Style>
               <Border>
@@ -585,25 +580,23 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="EndDate">
+          <Textbox Name="Textbox23">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Parameters!EndDate.Value</Value>
+                    <Value>=Count(Fields!ID.Value, "DataSet1")</Value>
                     <Style />
                   </TextRun>
                 </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
+                <Style />
               </Paragraph>
             </Paragraphs>
-            <rd:DefaultName>EndDate</rd:DefaultName>
-            <Top>3.24879cm</Top>
-            <Left>12.43833cm</Left>
+            <rd:DefaultName>Textbox23</rd:DefaultName>
+            <Top>5.52771cm</Top>
+            <Left>4.53123cm</Left>
             <Height>0.6cm</Height>
             <Width>2.5cm</Width>
             <ZIndex>8</ZIndex>
@@ -618,13 +611,13 @@
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>63.88175mm</Height>
+        <Height>66.82242mm</Height>
         <Style />
       </Body>
       <Width>210mm</Width>
       <Page>
         <PageFooter>
-          <Height>0.97896cm</Height>
+          <Height>1.19062cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -647,8 +640,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>PageNumber</rd:DefaultName>
-              <Top>0.17639cm</Top>
-              <Left>18.65797cm</Left>
+              <Top>0.36146cm</Top>
+              <Left>18.94803cm</Left>
               <Height>0.6cm</Height>
               <Width>0.67438cm</Width>
               <Style>
@@ -680,8 +673,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TotalPages</rd:DefaultName>
-              <Top>0.17639cm</Top>
-              <Left>19.94557cm</Left>
+              <Top>0.36146cm</Top>
+              <Left>20.23563cm</Left>
               <Height>0.6cm</Height>
               <Width>0.54208cm</Width>
               <ZIndex>1</ZIndex>
@@ -712,8 +705,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox19</rd:DefaultName>
-              <Top>0.17639cm</Top>
-              <Left>16.76931cm</Left>
+              <Top>0.36146cm</Top>
+              <Left>17.05937cm</Left>
               <Height>0.6cm</Height>
               <Width>1.88866cm</Width>
               <ZIndex>2</ZIndex>
@@ -744,8 +737,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox20</rd:DefaultName>
-              <Top>0.17639cm</Top>
-              <Left>19.33235cm</Left>
+              <Top>0.36146cm</Top>
+              <Left>19.62241cm</Left>
               <Height>0.6cm</Height>
               <Width>0.61322cm</Width>
               <ZIndex>3</ZIndex>
@@ -768,10 +761,6 @@
         </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
-        <LeftMargin>2cm</LeftMargin>
-        <RightMargin>2cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
         <ColumnSpacing>0.13cm</ColumnSpacing>
         <Style />
       </Page>
@@ -815,5 +804,5 @@
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>8c098864-e832-4e95-8918-2e5c32ab3c9c</rd:ReportID>
+  <rd:ReportID>517dc8f9-b1ee-407f-af94-0faa19703b52</rd:ReportID>
 </Report>

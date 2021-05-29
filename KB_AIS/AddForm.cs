@@ -100,11 +100,11 @@ namespace KB_AIS
                     }
                     else
                     {
-                        //var md5 = MD5.Create();
-                        //var hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes("123456"));
-                        //string password = Convert.ToBase64String(hashPassword);
+                        var md5 = MD5.Create();
+                        var hashPassword = md5.ComputeHash(Encoding.UTF8.GetBytes("123456"));
+                        string password = Convert.ToBase64String(hashPassword);
 
-                        string query = @"Insert into Сотрудники values ('"+seriesPassportTextBox.Text+"','"+idPassportTextBox.Text+"','"+telephoneTextBox.Text+"','123456','0','"+ image + "','"+surnameTextBox.Text+"','"+nameTextBox.Text+"','"+patronymicTextBox.Text+"');";
+                        string query = @"Insert into Сотрудники values ('"+seriesPassportTextBox.Text+"','"+idPassportTextBox.Text+"','"+telephoneTextBox.Text+"','"+ password + "','0','"+ image + "','"+surnameTextBox.Text+"','"+nameTextBox.Text+"','"+patronymicTextBox.Text+"');";
 
                         SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                         sqlConnection.Open();

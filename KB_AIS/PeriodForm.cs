@@ -27,7 +27,7 @@ namespace KB_AIS
         {
             if (mark=="1")
             {
-                ReportForm reportForm = new ReportForm();
+                ReporCertificateForm reportForm = new ReporCertificateForm();
                 reportForm.humanRDForm = this;
                 reportForm.stDate = dateTimePicker1.Value;
                 reportForm.enDate = dateTimePicker2.Value;
@@ -37,7 +37,7 @@ namespace KB_AIS
             }
             else if (mark == "2")
             {
-                ReportForm reportForm = new ReportForm();
+                ReporCertificateForm reportForm = new ReporCertificateForm();
                 reportForm.humanRDForm = this;
                 reportForm.stDate = dateTimePicker1.Value;
                 reportForm.enDate = dateTimePicker2.Value;
